@@ -25,12 +25,14 @@ public class UserDTO {
     //    -------login----
     public boolean login(UserDAO udao) {
         Connection con = GetConnection.getConnection();
-        String query = "SELECT * FROM usersinfo WHERE username =? AND password = ?";
+        String query = "SELECT * FROM usersinfo WHERE username = ?";
         ResultSet rs;
         boolean b = false;
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, udao.getUsername());
+           
             rs = ps.executeQuery();
             if (rs.next()) {
 
@@ -54,6 +56,8 @@ public class UserDTO {
         } catch (SQLException ex) {
 
             System.out.println("some Exception");
+
+            System.out.println("" + ex);
             return b;
 
         } finally {

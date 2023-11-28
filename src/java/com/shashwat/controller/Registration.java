@@ -22,7 +22,7 @@ public class Registration extends HttpServlet {
             String email = request.getParameter("email");
             String mobile = request.getParameter("mobile");
 
-//            -------------------
+//     ----- -------------------
             String gender = "male";
 //    --------------------------       
             String password = request.getParameter("password");
@@ -34,14 +34,19 @@ public class Registration extends HttpServlet {
             HttpSession session = request.getSession();
             if (udto.insert(udao)) {
 
+//                --------  send on Home page -----------
+                System.out.println("" + udao.getUsername());
+                System.out.println("" + udao.getPassword());
                 if (udto.login(udao)) {
 
                     session.setAttribute("udao", udao);
                     response.sendRedirect("./UserView/Home.jsp");
+                } else {
+                    response.sendRedirect("Registration.jsp");
                 }
+            } else {
+                response.sendRedirect("Registration.jsp");
             }
-            response.sendRedirect("Registration.jsp");
-
         }
     }
 

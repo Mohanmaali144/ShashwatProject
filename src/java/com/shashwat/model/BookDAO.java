@@ -11,12 +11,13 @@ public class BookDAO implements Serializable {
 
     }
 
-    public BookDAO(String bookName, int page, String publishingYear, String image, String pdf) {
+    public BookDAO(String bookName, int page, String publishingYear, String image) {
+
         this.bookName = bookName;
         this.page = page;
         this.publishingYear = publishingYear;
         this.image = image;
-        this.pdf = pdf;
+//        this.pdf = pdf;
     }
 
     public int getBookId() {
