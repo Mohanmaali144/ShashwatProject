@@ -8,6 +8,14 @@
         <servlet-name>BookInsert</servlet-name>
         <servlet-class>com.shashwat.controller.BookInsert</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerLogin</servlet-name>
+        <servlet-class>com.shashwat.controller.manager.ManagerLogin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -15,5 +23,13 @@
     <servlet-mapping>
         <servlet-name>BookInsert</servlet-name>
         <url-pattern>/BookInsert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/AdminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerLogin</servlet-name>
+        <url-pattern>/ManagerLogin</url-pattern>
     </servlet-mapping>
 </web-app>
