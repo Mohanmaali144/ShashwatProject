@@ -493,7 +493,15 @@
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                            <button class="btn btn-outline-primary">Want to read</button>
+                                                    <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reading Status
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Want to Read</a>
+                            <a class="dropdown-item" href="#">CurrentLy Reading</a>
+                          </div>
+                        </div>
                         </div>
                     </div>
                 </div>

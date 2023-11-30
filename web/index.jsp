@@ -580,7 +580,7 @@
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                            <button class="btn btn-outline-primary">Want to read</button>
+                            <button class="btn btn-outline-primary" href="#loginmodal" data-toggle="modal" data-target="#loginmodal">Reading Status</button>
                         </div>
                     </div>
                 </div>
