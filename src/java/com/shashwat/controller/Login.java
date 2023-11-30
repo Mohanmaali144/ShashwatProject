@@ -1,5 +1,7 @@
 package com.shashwat.controller;
 
+import com.shashwat.model.BlogDAO;
+import com.shashwat.model.BlogDTO;
 import com.shashwat.model.UserDAO;
 import com.shashwat.model.UserDTO;
 import java.sql.ResultSet;
@@ -12,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
@@ -24,6 +27,8 @@ public class Login extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
+            String category = request.getParameter("category");
+
             UserDAO udao = new UserDAO();
 
             udao.setUsername(username);
@@ -34,10 +39,18 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             if (udto.login(udao)) {
 
+                System.out.println("" + category);
+                ArrayList<BlogDAO> bloglist = new ArrayList<>();
+                BlogDTO blogdto = new BlogDTO();
+
+                if (blogdto.getBlog(bloglist)) {
+                    session.setAttribute("bloglist", bloglist);
+                }
                 session.setAttribute("udao", udao);
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("./UserView/Home.jsp");
+            } else {
+                response.sendRedirect("Login.jsp");
             }
-            response.sendRedirect("UserLogin.jsp");
 
         }
     }
