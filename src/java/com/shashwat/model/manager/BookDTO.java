@@ -24,7 +24,7 @@ public class BookDTO {
             try {
                 System.out.println("nitin 2");
 
-                String sql = "insert into BookDetails(bookName, publishingYear,pageNo,img_path,pdf_path,genre_id,Author_id) values(?,?,?,?,?,?,?)";
+                String sql = "insert into bookdetails(bookName, publishingYear,pageNo,img_path,pdf_path,genre_id,Author_id) values(?,?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, bookdao.getBookName());
                 ps.setString(2, bookdao.getPublishingYear());

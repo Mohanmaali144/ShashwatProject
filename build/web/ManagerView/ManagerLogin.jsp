@@ -14,20 +14,20 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
+
 <section>
   <div class="form-box">
     <div class="form-value">
-      <form action="">
+      <form action="/SHASHWAT/ManagerLogin">
         <h2>Login</h2>
         <div class="inputbox">
           <ion-icon name="mail-outline"></ion-icon>
-          <input type="email" required>
+          <input type="email" required name="n1">
           <label for="">Email</label>
         </div>
         <div class="inputbox">
           <ion-icon name="lock-closed-outline"></ion-icon>
-          <input type="password" required>
+          <input type="password" required name="n2">
           <label for="">Password</label>
         </div>
         <div class="forget">
@@ -38,10 +38,8 @@
             <a href="#">Forgot password?</a>
           </label>
         </div>
-        <button herf="index.html">Log in</button>
-        <div class="register">
-          <p>Don't have a account ? <a href="#">Register</a></p>
-        </div>
+        <button required type='submit' value='Submit'>Log in</button>
+    
       </form>
     </div>
   </div>

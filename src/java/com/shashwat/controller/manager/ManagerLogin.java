@@ -3,13 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.shashwat.controller.manager;
-
+import com.shashwat.model.manager.LoginDAO;
+import com.shashwat.model.manager.LoginDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -21,16 +23,33 @@ public class ManagerLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ManagerLogin</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ManagerLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String email_id = request.getParameter("n1");
+            String manager_password = request.getParameter("n2");
+              
+              LoginDAO logindao = new LoginDAO();
+              logindao.setEmail_id(email_id);
+              logindao.setManager_password(manager_password);
+              LoginDTO logindto = new LoginDTO();
+              
+
+             
+              
+                 boolean b = logindto.login(logindao);
+//               ResultSet b = (ResultSet)dto.Login(dao);
+                  
+                if(b){
+                
+                    HttpSession s= request.getSession();
+                    s.setAttribute("logindao" ,logindao);
+                    
+                     response.sendRedirect("ManagerView/ManagerDashboard.jsp");
+                }
+                
+                else{
+              response.sendRedirect("ManagerView/ManagerLogin.jsp");
+             System.out.print("<h1>Email & password Invalid</h>");
+           }
+            
         }
     }
 

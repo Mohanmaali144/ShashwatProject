@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDAO.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/manager/AddBook.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/ManagerView/AddBook.jsp</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDTO.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/model/manager/BookDAO.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/web/ManagerView/ManagerLogin.jsp</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/model/manager/LoginDTO.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/model/manager/BookDTO.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/service/GetConnection.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/controller/manager/ManagerLogin.java</file>
+            <file>file:/D:/Mohan/ShashwatProject/src/java/com/shashwat/model/manager/LoginDAO.java</file>
         </group>
     </open-files>
 </project-private>

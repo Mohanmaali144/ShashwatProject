@@ -1,10 +1,3 @@
-<%-- 
-    Document   : AddBook
-    Created on : 29-Nov-2023, 10:41:29 am
-    Author     : HP
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -115,13 +108,18 @@
                         <div class="row">
        
 <div class="container mt-5">
-    <center><h2>Add Book</h2></center>
+    <center><h2>Add AudioBook</h2></center>
  <form id="bookForm"  >
      <!-- Author's Name -->
      <div class="form-group">
-         <label for="author">Author's Name</label>
+         <label for="author">Audio TItle</label>
          <input type="text" class="form-control" id="author" placeholder="Enter author's name" required>
      </div>
+ <!-- Speaker Name -->
+ <div class="form-group">
+    <label for="Speaker">Speaker Name</label>
+    <input type="text" class="form-control" id="Speaker" placeholder="Enter Speaker  name" required>
+</div>
 
      <!-- Genre -->
      <div class="form-group">
@@ -129,36 +127,47 @@
          <input type="text" class="form-control" id="genre" placeholder="Enter genre" required>
      </div>
 
-     <!-- Book Name -->
+     <!-- Release_date -->
      <div class="form-group">
-         <label for="bookName">Book Name</label>
-         <input type="text" class="form-control" id="bookName" placeholder="Enter book name" required>
+         <label for="bookName">Release_date</label>
+         <input type="date" class="form-control" id="Release_date" placeholder="Enter Release_date" required>
      </div>
 
-     <!-- Publishing Year -->
+     <!-- Description -->
      <div class="form-group">
-         <label for="publishingYear">Publishing Year</label>
-         <input type="number" class="form-control" id="publishingYear" placeholder="Enter publishing year" required>
+         <label for="Description">Description</label>
+         <input type="text" class="form-control" id="Description" placeholder="Enter Description" required>
      </div>
 
-     <!-- Adding Date -->
+     <!-- TimeDuration -->
      <div class="form-group">
-         <label for="addingDate">Adding Date</label>
-         <input type="date" class="form-control" id="addingDate" required>
+         <label for="TimeDuration">TimeDuration</label>
+         <input type="time" class="form-control" id="TimeDuration" required>
      </div>
 
-     <!-- PDF Link -->
+         <!-- Language -->
+         <div class="form-group">
+            <label for="Language">Language</label>
+            <input type="text" class="form-control" id="Language" required>
+        </div>
+     <!-- Audio_url -->
      <div class="form-group">
-         <label for="pdfLink">Upload PDF</label>
+         <label for="Audio_url">Audio_url</label>
          <br><form action="/action_page.php">
             <input type="file" id="myFile" name="filename">
             <!-- <input type="submit"> -->
           </form><br> <br>
      </div>
 
-     <!-- Book Image -->
+       <!-- Likes -->
+       <div class="form-group">
+        <label for="number">Likes</label>
+        <input type="text" class="form-control" id="Likes" required>
+    </div>
+
+     <!-- Thumbnail -->
      <div class="form-group">
-        <label for="imgLink">Upload BookImage</label>
+        <label for="imgLink">Thumbnail</label>
         <br><form action="/action_page.php">
            <input type="file" id="myFile" name="filename">
            <!-- <input type="submit"> -->
@@ -204,4 +213,3 @@
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
-
