@@ -1,11 +1,10 @@
 <%-- 
-    Document   : myaccount
-    Created on : 28-Nov-2023, 12:36:51 pm
+    Document   : myreadinglist
+    Created on : 29-Nov-2023, 4:32:01 pm
     Author     : NexGen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en">
@@ -46,7 +45,7 @@
                 </a>
               </li>
             <li class="list">
-              <a href="#" class="nav-link">
+                <a href="myblog.jsp" class="nav-link">
                 <i class="bx bx-book-alt icon"></i>
                 <span class="link">My Blog</span>
               </a>
@@ -65,7 +64,7 @@
               </a>
             </li>
             <li class="list">
-              <a href="#" class="nav-link">
+                <a href="likes.jsp" class="nav-link">
                 <i class="bx bx-heart icon"></i>
                 <span class="link">Likes</span>
               </a>
@@ -100,3 +99,4 @@
     <script src="../js/sidebar.js"></script>
   </body>
 </html>
+
