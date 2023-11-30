@@ -6,34 +6,31 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!-- Coding By CodingNepal - youtube.com/codingnepal -->
-<html lang="en" dir="ltr">
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Toast Notification | CodingNepal</title>
-    <link rel="stylesheet" href="css/notification.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome CDN link for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <script src="../js/notification.js" defer></script>
-     <!-- CSS -->
-     <link rel="stylesheet" href="../css/sidebar.css" />
-     <!-- Boxicons CSS -->
-     <link
-       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-       rel="stylesheet"
-     />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Sidebar Menu | Side Navigation Bar</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/sidebar.css" />
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <nav>
-        <div class="logo">
-          <i class="bx bx-menu menu-icon"></i>
-          <span class="logo-name">SHASHWAT</span>
-        </div>
-        <div class="sidebar">
-          
-  
-  <div class="sidebar-content">
+      <div class="logo">
+        <i class="bx bx-menu menu-icon"></i>
+        <span class="logo-name">SHASHWAT</span>
+      </div>
+      <div class="sidebar">
+        
+
+        <div class="sidebar-content">
           <ul class="lists">
             <li class="list">
               <a href="newpost.jsp" class="nav-link">
@@ -48,7 +45,7 @@
                 </a>
               </li>
             <li class="list">
-              <a href="#" class="nav-link">
+                <a href="myblog.jsp" class="nav-link">
                 <i class="bx bx-book-alt icon"></i>
                 <span class="link">My Blog</span>
               </a>
@@ -67,13 +64,13 @@
               </a>
             </li>
             <li class="list">
-              <a href="#" class="nav-link">
+                <a href="likes.jsp" class="nav-link">
                 <i class="bx bx-heart icon"></i>
                 <span class="link">Likes</span>
               </a>
             </li>
             <li class="list">
-              <a href="#" class="nav-link">
+                <a href="myreadinglist.jsp" class="nav-link">
                 <i class="bx bx-list-check icon"></i>
                 <span class="link">My Reading List</span>
               </a>
@@ -92,33 +89,13 @@
               </li>
           </ul>
 
-            <div class="bottom-cotent">
-              <li class="list">
-                <a href="#" class="nav-link">
-                  <i class="bx bx-cog icon"></i>
-                  <span class="link">Settings</span>
-                </a>
-              </li>
-              <li class="list">
-                <a href="#" class="nav-link">
-                  <i class="bx bx-log-out icon"></i>
-                  <span class="link">Logout</span>
-                </a>
-              </li>
-            </div>
-          </div>
+         
         </div>
-      </nav>
-  
-      <section class="overlay"></section>
-  
-      <script src="js/sidebar.js"></script>
-    <ul class="notifications"></ul>
-    <div class="buttons">
-      <button class="btn" id="success">Success</button>
-      <button class="btn" id="error">Error</button>
-      <button class="btn" id="warning">Warning</button>
-      <button class="btn" id="info">Info</button>
-    </div>
+      </div>
+    </nav>
+
+    <section class="overlay"></section>
+
+    <script src="../js/sidebar.js"></script>
   </body>
 </html>
