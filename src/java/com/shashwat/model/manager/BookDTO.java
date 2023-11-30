@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BookDTO {
 
@@ -13,13 +15,12 @@ public class BookDTO {
         Connection con = GetConnection.getConnection();
         System.out.println("Connection Done");
         boolean flag = false;
-        int auth = addAuthor(bookdao);
-        int gen = addGenre(bookdao);
+        int auth = checkAuthor(bookdao);
+        int gen = checkGenre(bookdao);
 
         System.out.println(auth);
         System.out.println(gen);
 
-       
         if (auth != 0 && gen != 0) {
             try {
                 System.out.println("nitin 2");
@@ -48,7 +49,7 @@ public class BookDTO {
         return flag;
     }
 
-    private int addAuthor(BookDAO bookdao) throws ClassNotFoundException {
+    private int checkAuthor(BookDAO bookdao) throws ClassNotFoundException {
         Connection con = GetConnection.getConnection();
 
         try {
@@ -59,6 +60,10 @@ public class BookDTO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
+            } else {
+//                return addAuthor(bookdao.getAuthorName());
+                int author = addAuthor(bookdao);
+                return author;
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -67,7 +72,36 @@ public class BookDTO {
         return 0;
     }
 
-    private int addGenre(BookDAO bookdao) throws ClassNotFoundException {
+    public int addAuthor(BookDAO bookdao) {
+        Connection con = GetConnection.getConnection();
+
+        try {
+            System.out.println("nitin 2");
+
+            String sql = "insert into authorinfo(Author_name) values(?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, bookdao.getAuthorName());
+            if (ps.executeUpdate() > 0) {
+
+                System.out.println("Inserted");
+
+                BookDTO bdto = new BookDTO();
+                return bdto.checkAuthor(bookdao);
+
+            } else {
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    private int checkGenre(BookDAO bookdao) throws ClassNotFoundException {
         Connection con = GetConnection.getConnection();
 
         try {
@@ -77,10 +111,38 @@ public class BookDTO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
+            } else {
+                int genre = addGenre(bookdao);
+                return genre;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }
+
+    }
+
+    public int addGenre(BookDAO bookdao) {
+        Connection con = GetConnection.getConnection();
+        boolean flag = false;
+        try {
+            System.out.println("nitin 2");
+
+            String sql = "insert into genreinfo (genre) values(?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, bookdao.getGenre());
+            if (ps.executeUpdate() > 0) {
+
+                System.out.println("Inserted");
+                BookDTO bdto = new BookDTO();
+                return bdto.checkGenre(bookdao);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            flag = false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookDTO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }

@@ -109,7 +109,7 @@
                                     <a class="dropdown-item" href="blog.jsp" >Thriller</a>
                                     <a class="dropdown-item" href="blog.jsp" >Adventure</a>
                                     <a class="dropdown-item" href="blog.jsp" >Self-help</a>
-                                    <a class="dropdown-item" href="blog.jsp" >Horror</a>
+                                    <a class="dropdown-item" href="/SHASHWAT/GetBlog?category=whether" >Horror</a>
                                     <a class="dropdown-item" href="/SHASHWAT/GetBlog?category=technology" >Technology</a>
                                     <!-- call servlet for logout user -->
                                 </div>

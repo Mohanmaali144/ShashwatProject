@@ -75,4 +75,38 @@ public class BlogDTO {
 
         return flag;
     }
+
+    public boolean getUserBlog(ArrayList<BlogDAO> bloglist, int userId) {
+        boolean flag = false;
+
+        Connection con = GetConnection.getConnection();
+        String query = "SELECT * FROM blog WHERE user_id = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                BlogDAO blogdao = new BlogDAO();
+
+                blogdao.setBlogId(rs.getInt("blog_id"));
+                blogdao.setTitle(rs.getString("title"));
+                blogdao.setCategory(rs.getString("category"));
+                blogdao.setPublicationDate(rs.getString("publication_date"));
+                blogdao.setContent(rs.getString("content"));
+                blogdao.setLikes(rs.getInt("likes"));
+                blogdao.setImgage(rs.getString("img_url"));
+                bloglist.add(blogdao);
+                flag = true;
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println(e);
+            flag = false;
+        }
+
+        return flag;
+    }
 }
