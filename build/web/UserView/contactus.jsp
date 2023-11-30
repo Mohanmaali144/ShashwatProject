@@ -67,13 +67,14 @@
                         <a class="nav-link" href="home.html"><i class="fa fa-home"></i> Home</a>
                     </li>
             
+                   
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-book"></i> My Book
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../mybook/currentread.html">Current Reading</a>
-                        <a class="dropdown-item" href="../mybook/wanttoread.html" onclick="">Want to Read</a>
+                          <a class="dropdown-item" href="mybook/currentreading.jsp">Current Reading</a>
+                        <a class="dropdown-item" href="mybook/wanttoread.jsp" onclick="">Want to Read</a>
                         <!-- call servlet for logout user -->
                     </div>
                   </li>
@@ -95,10 +96,20 @@
                     </div>
                 </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link" href="blog.html"><i class="fa fa-book"></i> Blog</a>
-                  </li>
-
+                   <li class="nav-item dropdown">
+                      <a  class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href=""><i class="fa fa-book"></i> Blog</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="blog.jsp" >Novel</a>
+                      <a class="dropdown-item" href="blog.jsp" >Science fiction</a>
+                      <a class="dropdown-item" href="blog.jsp" >Mystery</a>
+                      <a class="dropdown-item" href="blog.jsp" >Thriller</a>
+                      <a class="dropdown-item" href="blog.jsp" >Adventure</a>
+                      <a class="dropdown-item" href="blog.jsp" >Self-help</a>
+                      <a class="dropdown-item" href="blog.jsp" >Horror</a>
+                      <a class="dropdown-item" href="blog.jsp" >Text-Books</a>
+                        <!-- call servlet for logout user -->
+                    </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="podcast.html"><i class="fa fa-microphone"></i> Podcast</a>
                     </li>
@@ -112,36 +123,36 @@
                         <a class="nav-link" href="tutorial.html"><i class="fa fa-graduation-cap"></i> Tutorials</a>
                     </li>
 
-                    <li class="nav-item ">
-                      <img src="../images/user.png" alt="" class="user-pic" onclick="toggleMenu()">
-                      <div class="sub-menu-wrap" id="subMenu">
+                     <li class="nav-item ">
+                        <a href="myprofile/profile.jsp"><img src="images/user.png" alt="" class="user-pic" onclick="toggleMenu()"></a>
+<!--                      <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
                             <div class="user-info">
-                                <img src="../images/user.png" alt="">
+                                <img src="images/user.png" alt="">
                                 <h3>Mohan maali</h3>
                             </div>
                             <hr>
-            
-                            <a href="../myprofile/subscription2.html" class="sub-menu-link">
-                                <img src="../images/profile.png" alt="">
+                            
+                              <a href="myprofile/subscription2.jsp" class="sub-menu-link">
+                                <img src="images/profile.png" alt="">
+                                <p>My Account</p>
+                                <span>&#11166;</span>
+                            </a>
+                            
+                            <a href="myprofile/subscription2.jsp" class="sub-menu-link">
+                                <img src="" alt="">
                                 <p>Get Premium</p>
                                 <span>&#11166;</span>
                             </a>
             
-                            <a href="../myprofile/editprofile.html" class="sub-menu-link">
-                                <img src="../images/setting.png" alt="">
+                            <a href="myprofile/editprofile.jsp" class="sub-menu-link">
+                                <img src="images/setting.png" alt="">
                                 <p>Settings & Privacy</p>
                                 <span>&#11166;</span>
                             </a>
             
                             <a href="#" class="sub-menu-link">
-                                <img src="../images/  alt="">
-                                <p>My Blog</p>
-                                <span>&#11166;</span>
-                            </a>
-            
-                            <a href="#" class="sub-menu-link">
-                                <img src="../images/logout.png" alt="">
+                                <img src="images/logout.png" alt="">
                                 <p>Logout</p>
                                 <span>&#11166;</span>
                             </a>
@@ -154,8 +165,9 @@
                       {
                           subMenu.classList.toggle("open-menu");
                       }
-                  </script>
+                  </script>-->
                   </li>
+              
               
                     <!-- ------------------------------- -->
                 </ul>

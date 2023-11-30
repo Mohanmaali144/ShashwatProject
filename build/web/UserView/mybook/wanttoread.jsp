@@ -57,7 +57,7 @@
                 <ul class="navbar-nav ml-auto w-100">
                     
                     <li class="nav-item active">
-                        <a class="nav-link" href="home.html"><i class="fa fa-home"></i> Home</a>
+                        <a class="nav-link" href="../Home.jsp"><i class="fa fa-home"></i> Home</a>
                     </li>
             
                     <li class="nav-item dropdown">
@@ -65,9 +65,8 @@
                         <i class="fa fa-book"></i> My Book
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="currentread.html">Current Reading</a>
-                          <a class="dropdown-item" href="wanttoread.html" onclick="">Want to Read</a>
-                          <a class="dropdown-item" href="myblogs.html">My Blogs</a>
+                          <a class="dropdown-item" href="currentreading.jsp">Current Reading</a>
+                          <a class="dropdown-item" href="wanttoread.jsp" onclick="">Want to Read</a>
                           <!-- call servlet for logout user -->
                       </div>
                   </li>
@@ -77,37 +76,48 @@
                       <i class="fa fa-list-alt"></i> Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="category/novel.html">Novel</a>
-                        <a class="dropdown-item" href="category/Sciencefiction.html">Science fiction</a>
-                        <a class="dropdown-item" href="category/Mystery.html">Mystery</a>
-                        <a class="dropdown-item" href="category/Thriller.html">Thriller</a>
-                        <a class="dropdown-item" href="category/adventure.html">Adventure</a>
-                        <a class="dropdown-item" href="category/Selfhelp.html">Self-help</a>
-                        <a class="dropdown-item" href="category/horror.html">Horror</a>
-                        <a class="dropdown-item" href="category/Textbooks.html">Text-Books</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Novel</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Science fiction</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Mystery</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Thriller</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Adventure</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Self-help</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Horror</a>
+                        <a class="dropdown-item" href="../catgory.jsp">Text-Books</a>
                         <!-- call servlet for logout user -->
                     </div>
                 </li>
 
-                    <li class="nav-item">
-                      <a class="nav-link" href="blog.html"><i class="fa fa-book"></i> Blog</a>
-                  </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="podcast.html"><i class="fa fa-microphone"></i> Podcast</a>
+                    <li class="nav-item dropdown">
+                      <a  class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href=""><i class="fa fa-book"></i> Blog</a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="../blog.jsp" >Novel</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Science fiction</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Mystery</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Thriller</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Adventure</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Self-help</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Horror</a>
+                      <a class="dropdown-item" href="../blog.jsp" >Text-Books</a>
+                        <!-- call servlet for logout user -->
+                    </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="audiobook.html"fa fa-headphones"></i> Audio Books</a>
+                        <a class="nav-link" href="../podcast.jsp"><i class="fa fa-microphone"></i> Podcast</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-graduation-cap"></i> Tutorials</a>
+                        <a class="nav-link" href="../podcast.jsp"fa fa-headphones"></i> Audio Books</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tutorial.jsp"><i class="fa fa-graduation-cap"></i> Tutorials</a>
                     </li>
 
                     <li class="nav-item ">
-                      <img src="../images/user.png" alt="" class="user-pic" onclick="toggleMenu()">
-                      <div class="sub-menu-wrap" id="subMenu">
+                      <a href="../myprofile/profile.jsp"><img src="../images/user.png" alt="" class="user-pic" onclick="toggleMenu()"></a>
+<!--                      <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
                             <div class="user-info">
                                 <img src="../images/user.png" alt="">
@@ -147,7 +157,7 @@
                       {
                           subMenu.classList.toggle("open-menu");
                       }
-                  </script>
+                  </script>-->
                   </li>
               
                     <!-- ------------------------------- -->

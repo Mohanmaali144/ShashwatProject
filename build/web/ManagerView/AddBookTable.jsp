@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddBook
-    Created on : 29-Nov-2023, 10:41:29 am
+    Document   : AddBookTable
+    Created on : 29-Nov-2023, 10:42:51 am
     Author     : HP
 --%>
 
@@ -17,7 +17,6 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="addbook.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -28,10 +27,10 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
+                <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
+                </div>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -81,8 +80,7 @@
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             
-                                            <a class="nav-link" href="BookinfoTable1.html">All Book  </a>
-                                            
+                                            <a class="nav-link" href="BookinfoTable1.html">All Book</a>
                                             <a class="nav-link" href="BorrowedBook.html">Borrowed Book</a>
                                             <a class="nav-link" href="AddBooktable1.html">AddBook</a>
                                         </nav>
@@ -113,82 +111,83 @@
                     <div class="container-fluid px-4">
                        
                         <div class="row">
-       
-<div class="container mt-5">
-    <center><h2>Add Book</h2></center>
- <form id="bookForm"  >
-     <!-- Author's Name -->
-     <div class="form-group">
-         <label for="author">Author's Name</label>
-         <input type="text" class="form-control" id="author" placeholder="Enter author's name" required>
+ 
+<div class="container mt-5 table-responsive" >
+    <center>  <h2>Book Information</h2></center>
+     <form action="AddBooks.html">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Author's Name</th>
+                    <th>Genre</th>
+                    <th>Book Name</th>
+                    <th>Publishing Year</th>
+                    <th>Adding Date</th>
+                    <th>PDF Link</th>
+                    <th>Book Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data, you can dynamically populate this with your data -->
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>Fiction</td>
+                    <td>The Mystery Book</td>
+                    <td>2022</td>
+                    <td>2023-10-31</td>
+                    <td><a href="https://example.com/book.pdf" target="_blank">Download PDF</a></td>
+                    <td><a href="https://example.com/book-image.jpg" target="_blank">View Image</a></td>
+                    <td><form action="Edit.html"><button class="btn btn-primary ">Edit</button></form></td>
+                    <td><button class="btn btn-danger delete-btn">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>John Smith</td>
+                    <td>Non-Fiction</td>
+                    <td>Science Facts</td>
+                    <td>2021</td>
+                    <td>2023-11-15</td>
+                    <td><a href="https://example.com/another-book.pdf" target="_blank">Download PDF</a></td>
+                    <td><a href="https://example.com/another-book-image.jpg" target="_blank">View Image</a></td>
+                    <td><form action="Edit.html"><button class="btn btn-primary ">Edit</button></form></td>
+                    <td><button class="btn btn-danger delete-btn">Delete</button></td>
+                </tr>
+                <!-- Add more rows for additional book data -->
+            </tbody>
+        </table>
+     
+        <button class="btn btn-success" id="add-book">Add Book</button>
      </div>
-
-     <!-- Genre -->
-     <div class="form-group">
-         <label for="genre">Genre</label>
-         <input type="text" class="form-control" id="genre" placeholder="Enter genre" required>
-     </div>
-
-     <!-- Book Name -->
-     <div class="form-group">
-         <label for="bookName">Book Name</label>
-         <input type="text" class="form-control" id="bookName" placeholder="Enter book name" required>
-     </div>
-
-     <!-- Publishing Year -->
-     <div class="form-group">
-         <label for="publishingYear">Publishing Year</label>
-         <input type="number" class="form-control" id="publishingYear" placeholder="Enter publishing year" required>
-     </div>
-
-     <!-- Adding Date -->
-     <div class="form-group">
-         <label for="addingDate">Adding Date</label>
-         <input type="date" class="form-control" id="addingDate" required>
-     </div>
-
-     <!-- PDF Link -->
-     <div class="form-group">
-         <label for="pdfLink">Upload PDF</label>
-         <br><form action="/action_page.php">
-            <input type="file" id="myFile" name="filename">
-            <!-- <input type="submit"> -->
-          </form><br> <br>
-     </div>
-
-     <!-- Book Image -->
-     <div class="form-group">
-        <label for="imgLink">Upload BookImage</label>
-        <br><form action="/action_page.php">
-           <input type="file" id="myFile" name="filename">
-           <!-- <input type="submit"> -->
-         </form><br>
-    </div>
-
-     <!-- Submit Button -->
-     <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
-    </form>
- </div>
-</div>
-
-<!-- JavaScript Validation -->
+     </form> 
+ 
+<!-- Add Bootstrap JS and jQuery for delete functionality -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
- document.getElementById("bookForm").addEventListener("submit", function(event) {
-     const author = document.getElementById("author").value;
-     const genre = document.getElementById("genre").value;
-     const bookName = document.getElementById("bookName").value;
-     const publishingYear = document.getElementById("publishingYear").value;
-     const addingDate = document.getElementById("addingDate").value;
-     const pdfLink = document.getElementById("pdfLink").value;
-     const bookImage = document.getElementById("bookImage").value;
+   // Function to delete a row when the Delete button is clicked
+   $(".delete-btn").click(function() {
+       $(this).closest("tr").remove();
+   });
 
-     if (!author || !genre || !bookName || !publishingYear || !addingDate || !pdfLink || !bookImage) {
-         event.preventDefault();
-         alert("Please fill out all required fields.");
-     }
- });
-</script>
-                 
+   // Function to add a new row when the Add Book button is clicked
+   $("#add-book").click(function() {
+       const newRow = `
+           <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td><button class="btn btn-danger delete-btn">Delete</button></td>
+           </tr>
+       `;
+       $("tbody").append(newRow);
+   });
+</script>                          
                             
                            
                         </div>
