@@ -34,8 +34,13 @@ public class GetBlog extends HttpServlet {
             ArrayList<BlogDAO> bloglist = new ArrayList<>();
             HttpSession session = request.getSession();
             BlogDTO blogdto = new BlogDTO();
-            if (blogdto.getBlog(bloglist)) {
+            if (blogdto.getBlog(bloglist,category)) {
                 session.setAttribute("bloglist", bloglist);
+
+                response.sendRedirect("./UserView/blog_1.jsp");
+            } else {
+                response.sendRedirect("./UserView/Home.jsp");
+
             }
 
         }

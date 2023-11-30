@@ -42,15 +42,15 @@ public class BlogDTO {
     }
 
 //    --------------------------get blog -----------------
-    public boolean getBlog(ArrayList<BlogDAO> bloglist) {
+    public boolean getBlog(ArrayList<BlogDAO> bloglist, String category) {
         boolean flag = false;
 
         Connection con = GetConnection.getConnection();
-        String query = "SELECT * FROM blog";
+        String query = "SELECT * FROM blog WHERE category = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(query);
-//            ps.setString(1, category);
+            ps.setString(1, category);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {

@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
                 ArrayList<BlogDAO> bloglist = new ArrayList<>();
                 BlogDTO blogdto = new BlogDTO();
 
-                if (blogdto.getBlog(bloglist)) {
+                if (blogdto.getBlog(bloglist, category)) {
                     session.setAttribute("bloglist", bloglist);
                 }
                 session.setAttribute("udao", udao);
