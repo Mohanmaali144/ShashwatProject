@@ -17,6 +17,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     --text: #1F2346;
 }
 
+
+
 body {
     font-size: 16px;
 }
@@ -255,7 +257,19 @@ body {
     transform: translate(-50%, -50%);
     transform-origin: center;
 }
-
+.gendar 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+#gendar
+{
+     width: 30px;
+    height: 30px;
+}
 .text-field input:focus {
     border: 1px solid var(--primary);
 }

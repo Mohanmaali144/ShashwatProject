@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddBook
-    Created on : 29-Nov-2023, 10:41:29 am
+    Document   : BorrowedBook
+    Created on : 29-Nov-2023, 10:48:24 am
     Author     : HP
 --%>
 
@@ -17,7 +17,6 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="addbook.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -28,10 +27,10 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
+                <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
+                </div>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -49,7 +48,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px"> </div>
+                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px "> </div>
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
@@ -81,8 +80,7 @@
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             
-                                            <a class="nav-link" href="BookinfoTable1.html">All Book  </a>
-                                            
+                                            <a class="nav-link" href="BookinfoTable1.html">All Book</a>
                                             <a class="nav-link" href="BorrowedBook.html">Borrowed Book</a>
                                             <a class="nav-link" href="AddBooktable1.html">AddBook</a>
                                         </nav>
@@ -110,85 +108,43 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
+                    <div class="container-fluid px-4 ">
                        
                         <div class="row">
-       
-<div class="container mt-5">
-    <center><h2>Add Book</h2></center>
- <form id="bookForm"  >
-     <!-- Author's Name -->
-     <div class="form-group">
-         <label for="author">Author's Name</label>
-         <input type="text" class="form-control" id="author" placeholder="Enter author's name" required>
-     </div>
-
-     <!-- Genre -->
-     <div class="form-group">
-         <label for="genre">Genre</label>
-         <input type="text" class="form-control" id="genre" placeholder="Enter genre" required>
-     </div>
-
-     <!-- Book Name -->
-     <div class="form-group">
-         <label for="bookName">Book Name</label>
-         <input type="text" class="form-control" id="bookName" placeholder="Enter book name" required>
-     </div>
-
-     <!-- Publishing Year -->
-     <div class="form-group">
-         <label for="publishingYear">Publishing Year</label>
-         <input type="number" class="form-control" id="publishingYear" placeholder="Enter publishing year" required>
-     </div>
-
-     <!-- Adding Date -->
-     <div class="form-group">
-         <label for="addingDate">Adding Date</label>
-         <input type="date" class="form-control" id="addingDate" required>
-     </div>
-
-     <!-- PDF Link -->
-     <div class="form-group">
-         <label for="pdfLink">Upload PDF</label>
-         <br><form action="/action_page.php">
-            <input type="file" id="myFile" name="filename">
-            <!-- <input type="submit"> -->
-          </form><br> <br>
-     </div>
-
-     <!-- Book Image -->
-     <div class="form-group">
-        <label for="imgLink">Upload BookImage</label>
-        <br><form action="/action_page.php">
-           <input type="file" id="myFile" name="filename">
-           <!-- <input type="submit"> -->
-         </form><br>
-    </div>
-
-     <!-- Submit Button -->
-     <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
-    </form>
- </div>
+ 
+<div class="container mt-5 table-responsive">
+    <center><h2>Borrowed Book Information</h2></center>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Book ID</th>
+                <th>Book Name</th>
+                <th>Genre</th>
+                <th>Borrow Date</th>
+                <th>Expiry Date</th>
+                <th>Borrowed Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data, you can dynamically populate this with your data -->
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>101</td>
+                <td>The Great Gatsby</td>
+                <td>Tragedy</td>
+                <td>2023-10-15</td>
+                <td>2023-11-15</td>
+                <td>5.00 Rs</td>
+            </tr>
+            <!-- Add more rows for additional borrowed book data -->
+        </tbody>
+    </table>
 </div>
 
-<!-- JavaScript Validation -->
-<script>
- document.getElementById("bookForm").addEventListener("submit", function(event) {
-     const author = document.getElementById("author").value;
-     const genre = document.getElementById("genre").value;
-     const bookName = document.getElementById("bookName").value;
-     const publishingYear = document.getElementById("publishingYear").value;
-     const addingDate = document.getElementById("addingDate").value;
-     const pdfLink = document.getElementById("pdfLink").value;
-     const bookImage = document.getElementById("bookImage").value;
-
-     if (!author || !genre || !bookName || !publishingYear || !addingDate || !pdfLink || !bookImage) {
-         event.preventDefault();
-         alert("Please fill out all required fields.");
-     }
- });
-</script>
-                 
+                            
                             
                            
                         </div>

@@ -10,16 +10,17 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Signup Example</title>
-        <link rel="stylesheet" href="./css/Registration.css">
+        <title>Signup Shashwat</title>
+        <link rel="stylesheet" href="css/Registration.css">
     </head>
 
 
     <div class="form-wrapper">
         <div class="form-side">
 
-            <form action="/SHASHWAT/Registration" method="POST" class="my-form">
+            <form action="../Registration" method="POST" class="my-form">
                 <div class="login-welcome-row">
+                    <a href="../Registration">click here</a>
                     <h1>Create your account &#x1F44F;</h1>
                 </div>
                 <div class="socials-row">
@@ -70,6 +71,20 @@
                         <!-- svg icon -->
                     </label>
                 </div>
+                
+                <div class="text-filed">
+                    <label for="gendar" class="gendar" >Gendar:
+                        <label>
+                        <input type="radio" name="gender" id="gendar" value="Male"> Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" id="gendar" value="Female"> Female
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" id="gendar" value="Other"> Other
+                    </label>
+                    </label>
+                </div>
 
                 <div class="text-field">
                     <label for="email">Email:
@@ -100,12 +115,10 @@
                 <div class="my-form__actions">
                     <div class="my-form__row">
                         <span>Did you forget your password?</span>
-                        <a href="#" title="Reset Password">
-                            Reset Password
-                        </a>
+
                     </div>
                     <div class="my-form__signup">
-                        <a href="index.html" title="Login">
+                        <a href="../index.jsp" title="Login">
                             Back
                         </a>
                     </div>
@@ -113,7 +126,7 @@
             </form>
         </div>
 
-        <script src="./js/Registartion.js"></script>
+        <script src="../js/Registartion.js"></script>
 
 
 </html>

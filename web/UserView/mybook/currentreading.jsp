@@ -65,9 +65,8 @@
                         <i class="fa fa-book"></i> My Book
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-item" href="currentread.html">Current Reading</a>
-                          <a class="dropdown-item" href="wanttoread.html" onclick="">Want to Read</a>
-                          <a class="dropdown-item" href="myblogs.html">My Blogs</a>
+                          <a class="dropdown-item" href="currentread.jsp">Current Reading</a>
+                          <a class="dropdown-item" href="wanttoread.jsp" onclick="">Want to Read</a>
                           <!-- call servlet for logout user -->
                       </div>
                   </li>
@@ -106,8 +105,8 @@
                     </li>
 
                     <li class="nav-item ">
-                      <img src="../images/user.png" alt="" class="user-pic" onclick="toggleMenu()">
-                      <div class="sub-menu-wrap" id="subMenu">
+                        <a href="../myprofile/profile.jsp"><img src="../images/user.png" alt="" class="user-pic" onclick="toggleMenu()"></a>
+<!--                      <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
                             <div class="user-info">
                                 <img src="../images/user.png" alt="">
@@ -147,7 +146,7 @@
                       {
                           subMenu.classList.toggle("open-menu");
                       }
-                  </script>
+                  </script>-->
                   </li>
               
                     <!-- ------------------------------- -->
