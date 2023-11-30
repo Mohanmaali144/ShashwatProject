@@ -1,6 +1,6 @@
 <%-- 
-    Document   : AddBook
-    Created on : 29-Nov-2023, 10:41:29 am
+    Document   : Edit
+    Created on : 29-Nov-2023, 10:51:44 am
     Author     : HP
 --%>
 
@@ -17,7 +17,6 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="addbook.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -28,10 +27,10 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
+                <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
+                </div>
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -49,7 +48,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px"> </div>
+                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px "> </div>
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
@@ -81,8 +80,7 @@
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             
-                                            <a class="nav-link" href="BookinfoTable1.html">All Book  </a>
-                                            
+                                            <a class="nav-link" href="BookinfoTable1.html">All Book</a>
                                             <a class="nav-link" href="BorrowedBook.html">Borrowed Book</a>
                                             <a class="nav-link" href="AddBooktable1.html">AddBook</a>
                                         </nav>
@@ -115,8 +113,8 @@
                         <div class="row">
        
 <div class="container mt-5">
-    <center><h2>Add Book</h2></center>
- <form id="bookForm"  >
+    <center><h2>Update Book</h2></center>
+ <form id="bookForm">
      <!-- Author's Name -->
      <div class="form-group">
          <label for="author">Author's Name</label>
@@ -149,26 +147,20 @@
 
      <!-- PDF Link -->
      <div class="form-group">
-         <label for="pdfLink">Upload PDF</label>
-         <br><form action="/action_page.php">
-            <input type="file" id="myFile" name="filename">
-            <!-- <input type="submit"> -->
-          </form><br> <br>
+         <label for="pdfLink">PDF Link</label>
+         <input type="url" class="form-control" id="pdfLink" placeholder="Enter PDF link" required>
      </div>
 
      <!-- Book Image -->
      <div class="form-group">
-        <label for="imgLink">Upload BookImage</label>
-        <br><form action="/action_page.php">
-           <input type="file" id="myFile" name="filename">
-           <!-- <input type="submit"> -->
-         </form><br>
-    </div>
+         <label for="bookImage">Book Image</label>
+         <input type="url" class="form-control" id="bookImage" placeholder="Enter book image link" required>
+     </div>
 
      <!-- Submit Button -->
-     <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
-    </form>
- </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+ </form>
+</div>
 </div>
 
 <!-- JavaScript Validation -->
