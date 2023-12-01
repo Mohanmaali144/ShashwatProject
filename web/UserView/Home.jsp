@@ -182,7 +182,7 @@
         <!-- book catlog end ------------------------------------------------------------ -->
         <div class="container">
             <br>
-            <center><h3>Tranding</h3></center>
+            <center><h3>Trending</h3></center>
             <br>
             <div class="row row-cols-lg-5 row-cols-md-3">
                 <%
@@ -222,8 +222,9 @@
                                                     Reading Status
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a class="dropdown-item" href="../ServletName?bookid=<%=bdao.getBookId()%>">Want to Read</a>
-                                                    <a class="dropdown-item" href="../ServletName?bookid=<%=bdao.getBookId()%>">CurrentLy Reading</a>
+                                                    <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=1">Want to Read</a>
+                                                    <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=2">CurrentLy Reading</a>
+                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=3">Already Read</a>
                                                 </div>
                                             </div>
                                         </div>
