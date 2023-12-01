@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class GetBook extends HttpServlet {
 
@@ -25,11 +27,21 @@ public class GetBook extends HttpServlet {
 
             if (bookdto.getBook(bookdao)) {
 
+
+       
                 session.setAttribute("bookdao", bookdao);
+
+                ArrayList<BookDAO> genredao = bookdto.getGenre();
+
+                session.setAttribute("genredao", genredao);
                 response.sendRedirect("./UserView/Home.jsp");
+
             } else {
                 response.sendRedirect("./UserView/Home.jsp");
             }
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }

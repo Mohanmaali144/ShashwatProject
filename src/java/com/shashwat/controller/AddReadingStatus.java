@@ -1,61 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.shashwat.controller;
 
-import com.shashwat.model.BlogDAO;
-import com.shashwat.model.BlogDTO;
 import com.shashwat.model.UserDAO;
 import com.shashwat.model.UserDTO;
-import java.sql.ResultSet;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+/**
+ *
+ * @author NexGen
+ */
+public class AddReadingStatus extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-//            user login get data from login jsp
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-//            get data from manager  jsp
-            String category = request.getParameter("category");
-
-            UserDAO udao = new UserDAO();
-            udao.setUsername(username);
-            udao.setPassword(password);
-
-            UserDTO udto = new UserDTO();
-            HttpSession session = request.getSession();
-            if (udto.login(udao)) {
-                 session.setAttribute("udao", udao); //user login success
-                 
-                 
-                ArrayList<BlogDAO> bloglist = new ArrayList<>();
-                BlogDTO blogdto = new BlogDTO();           
-                if (blogdto.getBlog(bloglist, category)) {
-
-                    session.setAttribute("bloglist", bloglist); //geting blog success
-                }
-
-                
-                             
-                response.sendRedirect("GetBook");
-//                response.sendRedirect("./UserView/Home.jsp");
-            } else {
-                response.sendRedirect("Login.jsp");
+            /* TODO output your page here. You may use following sample code. */
+          
+            int bookId = Integer.parseInt(request.getParameter("bookid"));
+            HttpSession session =request.getSession();
+            UserDAO dao = (UserDAO) session.getAttribute("udao");
+            int userId = dao.getId();
+            int test  = Integer.parseInt(request.getParameter("test"));
+            UserDTO dto = new UserDTO();
+           boolean b = dto.addReadingStatus(test,bookId,userId);
+            if(b)
+            {
+                response.sendRedirect("./UserView/Home.jsp");
             }
-
         }
     }
 

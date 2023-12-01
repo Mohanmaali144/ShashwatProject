@@ -32,6 +32,10 @@
         <servlet-name>GetBook</servlet-name>
         <servlet-class>com.shashwat.controller.GetBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddReadingStatus</servlet-name>
+        <servlet-class>com.shashwat.controller.AddReadingStatus</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -63,5 +67,9 @@
     <servlet-mapping>
         <servlet-name>GetBook</servlet-name>
         <url-pattern>/GetBook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddReadingStatus</servlet-name>
+        <url-pattern>/AddReadingStatus</url-pattern>
     </servlet-mapping>
 </web-app>
