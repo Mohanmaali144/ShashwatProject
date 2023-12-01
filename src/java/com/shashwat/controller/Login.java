@@ -24,32 +24,32 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+//            user login get data from login jsp
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
+//            get data from manager  jsp
             String category = request.getParameter("category");
 
             UserDAO udao = new UserDAO();
-
             udao.setUsername(username);
             udao.setPassword(password);
 
             UserDTO udto = new UserDTO();
-
             HttpSession session = request.getSession();
             if (udto.login(udao)) {
-
-               
+                 session.setAttribute("udao", udao); //user login success
+                 
+                 
                 ArrayList<BlogDAO> bloglist = new ArrayList<>();
-                BlogDTO blogdto = new BlogDTO();
-
-                session.setAttribute("udao", udao);
-               
+                BlogDTO blogdto = new BlogDTO();           
                 if (blogdto.getBlog(bloglist, category)) {
-                    
-                    session.setAttribute("bloglist", bloglist);
+
+                    session.setAttribute("bloglist", bloglist); //geting blog success
                 }
 
+                
+                             
                 response.sendRedirect("GetBook");
 //                response.sendRedirect("./UserView/Home.jsp");
             } else {
