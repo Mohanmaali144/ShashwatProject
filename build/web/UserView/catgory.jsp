@@ -14,8 +14,7 @@
     ArrayList<BookDAO> bookdao = (ArrayList<BookDAO>) session.getAttribute("bookdao");
 
       ArrayList<BookDAO> genredao = (ArrayList<BookDAO>) session.getAttribute("genredao");
-    System.out.println("=============mmmmmmmmmmmmmmmmmmmmm=====================");
-    System.out.println(bookdao);
+  
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -29,9 +28,6 @@
 <!--mohan maal---------------------i-->
 
 <%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
-
-
-
 
 
 <!DOCTYPE html>
@@ -115,9 +111,14 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-                                    <%for(BookDAO gdao : genredao){%>
+
+                                    <%
+                                    if(genredao!=null){
+
+                                    for(BookDAO gdao : genredao){%>
                                     <a style="text-transform:capitalize" class="dropdown-item genre"  href="catgory.jsp" ><%=gdao.getGenre()%></a>
-                                    <%}%>
+                                    <%}
+                                        }%>
                                     <!-- call servlet for logout user -->
                                 </div>
                             </li>
@@ -159,7 +160,7 @@
             </nav>
         </header>
 
-        <!-- book catlog end ------------------------------------------------------------ -->
+        <!-- book catlog end -------------------------------------------------------------->
         <div class="container">
             <br>
             <center><h3>Tranding</h3></center>

@@ -229,9 +229,6 @@ public class BookDTO {
 
                 bdao.setAuthorName(rs.getString("Author_name"));
                 bdao.setGenre(rs.getString("genre"));
-
-//                new BookDTO().getGenreName(bdao);
-//                new BookDTO().getAuthorName(bdao);
                 bookdao.add(bdao);
 
                 System.out.println("coming in database");
