@@ -12,25 +12,25 @@ import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
 public class GetBook extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-         
-            
+
             HttpSession session = request.getSession();
             ArrayList<BookDAO> bookdao = new ArrayList<>();
-            
+
             BookDTO bookdto = new BookDTO();
-            
+
             if (bookdto.getBook(bookdao)) {
-                
+
                 session.setAttribute("bookdao", bookdao);
                 response.sendRedirect("./UserView/Home.jsp");
+            } else {
+                response.sendRedirect("./UserView/Home.jsp");
             }
-            
+
         }
     }
 

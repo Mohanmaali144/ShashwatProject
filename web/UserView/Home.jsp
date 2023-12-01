@@ -185,7 +185,7 @@
         <!-- book catlog end ------------------------------------------------------------ -->
         <div class="container">
             <br>
-            <center><h3>Tranding</h3></center>
+            <center><h3>Trending</h3></center>
             <br>
             <div class="row row-cols-lg-5 row-cols-md-3">
 

@@ -25,14 +25,14 @@ public class UserDTO {
     //    -------login----
     public boolean login(UserDAO udao) {
         Connection con = GetConnection.getConnection();
-        String query = "SELECT * FROM usersinfo WHERE username = ?";
+        String query = "SELECT * FROM usersinfo WHERE userName = ?";
         ResultSet rs;
         boolean b = false;
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, udao.getUsername());
-           
+
             rs = ps.executeQuery();
             if (rs.next()) {
 
@@ -42,7 +42,7 @@ public class UserDTO {
                     b = true;
 
                     udao.setId(rs.getInt("id"));
-                    udao.setFullname(rs.getString("username"));
+                    udao.setFullname(rs.getString("fullname"));
                     udao.setUsername(rs.getString("userName"));
                     udao.setEmail(rs.getString("email"));
                     udao.setMobile(rs.getString("mobile"));
@@ -56,7 +56,7 @@ public class UserDTO {
         } catch (SQLException ex) {
 
             System.out.println("some Exception");
-           
+
             System.out.println("" + ex);
             return b;
 
@@ -97,6 +97,7 @@ public class UserDTO {
         } catch (SQLException e) {
 
             System.out.println("some Exception");
+            System.out.println(e);
             result = false;
         }
 
