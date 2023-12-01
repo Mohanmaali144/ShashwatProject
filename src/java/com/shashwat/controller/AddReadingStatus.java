@@ -1,7 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.shashwat.controller;
 
-import com.shashwat.model.manager.BookDAO;
-import com.shashwat.model.manager.BookDTO;
+import com.shashwat.model.UserDAO;
+import com.shashwat.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -9,43 +13,39 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class GetBook extends HttpServlet {
+/**
+ *
+ * @author NexGen
+ */
+public class AddReadingStatus extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            HttpSession session = request.getSession();
-            ArrayList<BookDAO> bookdao = new ArrayList<>();
-
-            BookDTO bookdto = new BookDTO();
-
-            if (bookdto.getBook(bookdao)) {
-
-
-       
-                session.setAttribute("bookdao", bookdao);
-
-                ArrayList<BookDAO> genredao = bookdto.getGenre();
-                System.out.println("Genre : " + genredao);
-                session.setAttribute("genredao", genredao);
-                
-                System.out.println("comming in getbook");
-                response.sendRedirect("./UserView/Home.jsp");
-
-            } else {
+            /* TODO output your page here. You may use following sample code. */
+          
+            int bookId = Integer.parseInt(request.getParameter("bookid"));
+            HttpSession session =request.getSession();
+            UserDAO dao = (UserDAO) session.getAttribute("udao");
+            int userId = dao.getId();
+            int test  = Integer.parseInt(request.getParameter("test"));
+            UserDTO dto = new UserDTO();
+           boolean b = dto.addReadingStatus(test,bookId,userId);
+            if(b)
+            {
                 response.sendRedirect("./UserView/Home.jsp");
             }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
-
         }
     }
 
