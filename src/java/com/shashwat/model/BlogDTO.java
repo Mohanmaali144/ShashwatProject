@@ -16,10 +16,10 @@ public class BlogDTO {
         boolean flag = false;
         Connection con = GetConnection.getConnection();
         String query = "INSERT INTO blog (title,user_id,Category,content,img_url) VALUES (?,?,?,?,?)";
-        System.out.println("" + blogdao.getCategory() + "in dto");
+       
         try {
 
-            System.out.println("" + blogdao.getCategory() + "in dto");
+           
             PreparedStatement ps = con.prepareStatement(query);
 
             ps.setString(1, blogdao.getTitle());

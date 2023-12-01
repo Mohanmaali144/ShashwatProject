@@ -7,6 +7,19 @@
 <!--mohan maal---------------------i-->
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.manager.*"%>
+<%@page import="java.util.ArrayList"%>
+
+<%
+      
+    ArrayList<BookDAO> bookdao = (ArrayList<BookDAO>) session.getAttribute("bookdao");
+
+    System.out.println("=============mmmmmmmmmmmmmmmmmmmmm=====================");
+    System.out.println(bookdao);
+%>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -175,98 +188,145 @@
             <center><h3>Tranding</h3></center>
             <br>
             <div class="row row-cols-lg-5 row-cols-md-3">
-                <div class="col mb-4">
-                    <div class="card">
-                        <a href=""data-toggle="modal" data-target="#bookinfo"><img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 1" ></a>
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+
+                <%
+                        for(BookDAO bdao : bookdao){
+                %>
 
                 <div class="col mb-4">
                     <div class="card">
-                        <img class="book" src="img/booksimg/book2.jpg" height="100px" width="80px" class="card-img-top" alt="Book 2">
+                        <a href=""data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>                       
                         <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                            <button class="btn btn-success">Read</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#<%=bookdao.indexOf(bdao)%>">More</button>
                         </div>
                     </div>
                 </div>
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                <!--------bookinfo-------------->     
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                <!-- Modal -->
+<!--                <div id="<%=bdao.getBookId()%>" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                         Modal content
+                        <div class="modal-content">
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="img/booksimg/book3.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Book Title</h5>
+                                            <h6>Author Name</h6>
+                                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
+                                             <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> 
+                                            <div class="dropdown">
+                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Reading Status
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="#">Want to Read</a>
+                                                    <a class="dropdown-item" href="#">CurrentLy Reading</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                        </div>  -->
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                <%
+            }
+                %>
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
-                        <div class="card-body">
-                            <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
-                        </div>
-                    </div>
-                </div>
+                <!--             <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/booksimg/book2.jpg" height="100px" width="80px" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>
+              
+                              <div class="col mb-4">
+                                  <div class="card">
+                                      <img class="book" src="img/robinsharma.jpg" class="card-img-top" alt="Book 2">
+                                      <div class="card-body">
+                                          <button class="btn btn-success">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                                      </div>
+                                  </div>
+                              </div>-->
 
 
             </div>
         </div>
+
         <!-- ------------------------------------------------------------------------------ -->
 
 
@@ -284,6 +344,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="img/booksimg/booksbanner3.jpg" alt="quote" class="d-block" style="width:100%"; >
+
                 </div>
                 <div class="carousel-item">
                     <img src="img/booksimg/booksbanner2.jpg" alt="quote" class="d-block" style="width:100%">
@@ -474,11 +535,12 @@
     </body>
 </html>>
 
-<!-- Modal -->
-<div id="bookinfo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+Modal 
 
-        <!-- Modal content-->
+<% for(BookDAO bdao : bookdao){  %>
+<div id="<%=bookdao.indexOf(bdao)%>" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        Modal content
         <div class="modal-content">
 
             <div class="card mb-3" style="max-width: 540px;">
@@ -492,16 +554,16 @@
                             <h6>Author Name</h6>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
-                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                                                    <div class="dropdown">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Reading Status
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Want to Read</a>
-                            <a class="dropdown-item" href="#">CurrentLy Reading</a>
-                          </div>
-                        </div>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> 
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Reading Status
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Want to Read</a>
+                                    <a class="dropdown-item" href="#">CurrentLy Reading</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -510,7 +572,7 @@
 
         </div>
 
-
+        <%}%>
         <!-- ------------------------------------------------- -->
 
 

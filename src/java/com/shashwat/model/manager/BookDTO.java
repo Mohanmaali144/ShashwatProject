@@ -18,12 +18,8 @@ public class BookDTO {
         int auth = checkAuthor(bookdao);
         int gen = checkGenre(bookdao);
 
-        System.out.println(auth);
-        System.out.println(gen);
-
         if (auth != 0 && gen != 0) {
             try {
-                System.out.println("nitin 2");
 
                 String sql = "insert into BookDetails(bookName, publishingYear,pageNo,img_path,pdf_path,genre_id,Author_id) values(?,?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(sql);
@@ -203,6 +199,85 @@ public class BookDTO {
     public static void main(String[] args) throws ClassNotFoundException {
         BookDAO dao = new BookDAO();
         dao.getGenre();
+    }
+
+//    --------------get Book-------------------
+    public boolean getBook(ArrayList<BookDAO> bookdao) {
+
+        boolean flag = false;
+        Connection con = GetConnection.getConnection();
+        String query = "SELECT * FROM BookDetails";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                BookDAO bdao = new BookDAO();
+
+                bdao.setBookId(rs.getInt("book_id"));
+                bdao.setBookName(rs.getString("bookName"));
+                bdao.setPublishingYear(rs.getString("publishingYear"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setImg(rs.getString("img_path"));
+                bdao.setPdf(rs.getString("pdf_path"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setAuthorId(rs.getInt("Author_id"));
+                bdao.setGenreId(rs.getInt("genre_id"));
+                new BookDTO().getGenreName(bdao);
+                new BookDTO().getAuthorName(bdao);
+
+                bookdao.add(bdao);
+                flag = true;
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+            flag = false;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BookDTO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return flag;
+    }
+
+    public boolean getGenreName(BookDAO bdao) throws ClassNotFoundException {
+        Connection con = GetConnection.getConnection();
+        ResultSet rs = null;
+        boolean flag = false;
+        try {
+            String sql = "select * from GenreInfo WHERE Genre_id  = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, bdao.getGenreId());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bdao.setGenre(rs.getString(2));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return flag;
+    }
+
+    public boolean getAuthorName(BookDAO bdao) throws ClassNotFoundException {
+        Connection con = GetConnection.getConnection();
+        ResultSet rs = null;
+        boolean flag = false;
+        try {
+            String sql = "select * from authorInfo WHERE Author_id  = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, bdao.getAuthorId());
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                bdao.setAuthorName(rs.getString(2));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return flag;
     }
 
 }

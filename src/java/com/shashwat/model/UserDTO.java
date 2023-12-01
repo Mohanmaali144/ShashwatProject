@@ -42,7 +42,7 @@ public class UserDTO {
                     b = true;
 
                     udao.setId(rs.getInt("id"));
-                    udao.setFullname(rs.getString("name"));
+                    udao.setFullname(rs.getString("username"));
                     udao.setUsername(rs.getString("userName"));
                     udao.setEmail(rs.getString("email"));
                     udao.setMobile(rs.getString("mobile"));
@@ -56,7 +56,7 @@ public class UserDTO {
         } catch (SQLException ex) {
 
             System.out.println("some Exception");
-
+           
             System.out.println("" + ex);
             return b;
 

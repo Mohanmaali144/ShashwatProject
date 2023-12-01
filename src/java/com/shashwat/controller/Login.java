@@ -39,15 +39,19 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             if (udto.login(udao)) {
 
-                System.out.println("" + category);
+               
                 ArrayList<BlogDAO> bloglist = new ArrayList<>();
                 BlogDTO blogdto = new BlogDTO();
 
+                session.setAttribute("udao", udao);
+               
                 if (blogdto.getBlog(bloglist, category)) {
+                    
                     session.setAttribute("bloglist", bloglist);
                 }
-                session.setAttribute("udao", udao);
-                response.sendRedirect("./UserView/Home.jsp");
+
+                response.sendRedirect("GetBook");
+//                response.sendRedirect("./UserView/Home.jsp");
             } else {
                 response.sendRedirect("Login.jsp");
             }
