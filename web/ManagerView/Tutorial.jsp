@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Podcast
-    Created on : 29-Nov-2023, 3:49:34 pm
+    Document   : Tutorial
+    Created on : 01-Dec-2023, 11:08:23 am
     Author     : HP
 --%>
 
@@ -33,25 +33,7 @@
             <a class="navbar-brand ps-3" href="index.html">Librarian</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+            
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
@@ -120,48 +102,66 @@
                         <div class="row">
  
 <div class="container mt-5 table-responsive">
-    <center><h2>Podcast Information</h2></center>
+    <center><h2>Tutorials Information</h2></center>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Podcast ID</th>
-                <th>Podcast TItle</th>
-                <th>Host Name</th>
-                <th>Category</th>
+                <th>Tutorial ID</th>
+                <th>Tutorial TItle</th>
                 <th>Release_date</th>
                 <th>Description</th>
-                <th>Time Duration</th>
+                <th>Author</th>
+                <th>Publish_date</th>
+                <th>TimeDuration</th>
                 <th>Language</th>
-                <th>Video_url</th>
                 <th>Likes</th>
-                <th>Thumbnail</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                
-            </tr>
+                <th>Tutorial_url</th>   
+           </tr>
         </thead>
         <tbody>
             <!-- Sample data, you can dynamically populate this with your data -->
             <tr>
                 <td>1</td>
                 <td>Java</td>
-                <td>john124</td>
-                <td>Technology</td>
                 <td>YY/MM/DD</td>
                 <td>fndkjdfnfndjnkvf</td>
-                <td>abc</td>
+                <td>john</td>
+                <td>fndkjdfnfndjnkvf</td>
+                <td>12min</td>
                 <td>English</td>
-                <td>Video_url</td>
                 <td>3</td>
-                <td>Thumbnail</td>
-                <td><button class="btn btn-primary delete-btn">Edit</button></td>
-               <td><button class="btn btn-danger delete-btn">Delete</button></td>
-               
+                <td>Video_url</td>
+                <!-- podcast modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Users Block Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">User Name:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Blocking Reason:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ok</button>
+        <button type="button" class="btn btn-primary">Unblock</button>
+      </div>
+    </div>
+  </div>
+</div>
             </tr>
              
         </tbody>
     </table>
-    <button class="btn btn-success">Add Podcast </button>
 </div>
 
                             

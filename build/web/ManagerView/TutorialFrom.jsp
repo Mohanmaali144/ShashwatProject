@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Podcast
-    Created on : 29-Nov-2023, 3:49:34 pm
+    Document   : TutorialFrom
+    Created on : 01-Dec-2023, 11:09:10 am
     Author     : HP
 --%>
 
@@ -14,31 +14,24 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - Librarian</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <style>
-            .button
-            {
-                background-color: red;
-                width: 100%;
-                border: none;
-            }
-        </style>
+        <link rel="stylesheet" href="addbook.css">
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Librarian</a>
+            <a class="navbar-brand ps-3" href="index.html">Manager</a>
+           
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
+                <!-- <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
+                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -46,8 +39,6 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
                 </li>
@@ -58,7 +49,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px "> </div>
+                            <div class="sb-sidenav-menu-heading"> <a href=""><img src="manager.png" style="width:100px; height: 100px; border-radius: 50%; margin-top: 10px"> </div>
                             <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
@@ -73,7 +64,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="UserInfo.html">All Users</a> 
                                     <a class="nav-link" href="Subscription1.html">Subscription</a>
-                                    <!---->
+                                   
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -90,22 +81,26 @@
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             
-                                            <a class="nav-link" href="BookinfoTable1.html">All Book</a>
+                                            <a class="nav-link" href="BookinfoTable1.html">All Book  </a>
+                                            
                                             <a class="nav-link" href="BorrowedBook.html">Borrowed Book</a>
-                                            <a class="nav-link" href="AddBooks.html">AddBook</a>
+                                            <a class="nav-link" href="AddBooktable1.html">AddBook</a>
                                         </nav>
                                     </div>
-                             
-                         
+                                 
+                                   
+                                
+                            </div>
+                            <!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
                         </div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
@@ -115,56 +110,73 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4 ">
+                    <div class="container-fluid px-4">
                        
                         <div class="row">
- 
-<div class="container mt-5 table-responsive">
-    <center><h2>Podcast Information</h2></center>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Podcast ID</th>
-                <th>Podcast TItle</th>
-                <th>Host Name</th>
-                <th>Category</th>
-                <th>Release_date</th>
-                <th>Description</th>
-                <th>Time Duration</th>
-                <th>Language</th>
-                <th>Video_url</th>
-                <th>Likes</th>
-                <th>Thumbnail</th>
-                <th>Edit</th>
-                <th>Delete</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Sample data, you can dynamically populate this with your data -->
-            <tr>
-                <td>1</td>
-                <td>Java</td>
-                <td>john124</td>
-                <td>Technology</td>
-                <td>YY/MM/DD</td>
-                <td>fndkjdfnfndjnkvf</td>
-                <td>abc</td>
-                <td>English</td>
-                <td>Video_url</td>
-                <td>3</td>
-                <td>Thumbnail</td>
-                <td><button class="btn btn-primary delete-btn">Edit</button></td>
-               <td><button class="btn btn-danger delete-btn">Delete</button></td>
-               
-            </tr>
-             
-        </tbody>
-    </table>
-    <button class="btn btn-success">Add Podcast </button>
+       
+<div class="container mt-5">
+    <center><h2>Add Tutorial</h2></center>
+ <form id="bookForm"  >
+     <!-- Podcast TItle -->
+     <div class="form-group">
+         <label for="author">Tutorial TItle</label>
+         <input type="text" class="form-control" id="author"  required>
+     </div>
+<!-- Release_date -->
+<div class="form-group">
+    <label for="bookName">Release_date</label>
+    <input type="date" class="form-control" id="Release_date"  required>
 </div>
 
-                            
+     <!-- Description -->
+     <div class="form-group">
+         <label for="genre">Description</label>
+         <input type="text" class="form-control"  required>
+     </div>
+     <!-- Author -->
+     <div class="form-group">
+         <label for="bookName">Author Name</label>
+         <input type="text" class="form-control" id="Author" required>
+     </div>
+
+     <!-- Publish_date -->
+     <div class="form-group">
+         <label for="Description">Publish_date</label>
+         <input type="date" class="form-control" id="Description"  required>
+     </div>
+
+     <!-- TimeDuration -->
+     <div class="form-group">
+         <label for="TimeDuration">TimeDuration</label>
+         <input type="time" class="form-control" id="TimeDuration" required>
+     </div>
+
+         <!-- Language -->
+         <div class="form-group">
+            <label for="Language">Language</label>
+            <input type="text" class="form-control" id="Language" required>
+        </div>
+         <!-- Likes -->
+       <div class="form-group">
+        <label for="number">Likes</label>
+        <input type="text" class="form-control" id="Likes" required>
+    </div>
+     <!-- Video_url -->
+     <div class="form-group">
+         <label for="Audio_url">Tutorial_url</label>
+         <br><form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <!-- <input type="submit"> -->
+          </form><br> <br>
+     </div>
+
+     <!-- Submit Button -->
+     <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
+    </form>
+ </div>
+</div>
+
+                 
                             
                            
                         </div>
@@ -180,3 +192,4 @@
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
+

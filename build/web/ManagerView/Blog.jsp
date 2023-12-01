@@ -176,6 +176,7 @@
              
         </tbody>
     </table>
+    <button class="btn btn-success">Add Blog </button>
 </div>
 
                             
