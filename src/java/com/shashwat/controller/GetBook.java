@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,8 +33,10 @@ public class GetBook extends HttpServlet {
                 session.setAttribute("bookdao", bookdao);
 
                 ArrayList<BookDAO> genredao = bookdto.getGenre();
-
+                System.out.println("Genre : " + genredao);
                 session.setAttribute("genredao", genredao);
+                
+                System.out.println("comming in getbook");
                 response.sendRedirect("./UserView/Home.jsp");
 
             } else {

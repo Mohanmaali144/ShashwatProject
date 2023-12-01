@@ -99,12 +99,12 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-list-alt"></i> Category
+                                    <i class="fa fa-list-alt"></i> Genre
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                     <%for(BookDAO gdao : genredao){%>
-                                    <a class="dropdown-item" href="catgory.jsp" ><%=gdao.getGenre()%></a>
+                                    <a style="text-transform:capitalize" class="dropdown-item genre"  href="catgory.jsp" ><%=gdao.getGenre()%></a>
                                     <%}%>
                                     <!-- call servlet for logout user -->
                                 </div>
@@ -185,7 +185,6 @@
             <center><h3>Trending</h3></center>
             <br>
             <div class="row row-cols-lg-5 row-cols-md-3">
-
                 <%
                         for(BookDAO bdao : bookdao){
                 %>
@@ -234,8 +233,6 @@
                             </div>
 
                         </div>   </div>   </div>  
-
-
                 <%
             }
                 %>
@@ -449,46 +446,6 @@
 
 
     </body>
-</html>>
-
-Modal 
-
-
-<!--<div id="bookinfo" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        Modal content
-        <div class="modal-content">
-
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="img/booksimg/book3.jpg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Book Title</h5>
-                            <h6>Author Name</h6>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> 
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Reading Status
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Want to Read</a>
-                                    <a class="dropdown-item" href="#">CurrentLy Reading</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>-->
-
-
-<!-- ------------------------------------------------- -->
+</html>
 
 
