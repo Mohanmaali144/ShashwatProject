@@ -203,10 +203,9 @@ public class BookDTO {
 
 //    --------------get Book-------------------
     public boolean getBook(ArrayList<BookDAO> bookdao) {
-
         boolean flag = false;
         Connection con = GetConnection.getConnection();
-        String query = "SELECT * FROM BookDetails";
+        String query = "SELECT bookdetails.book_id, bookdetails.bookName, bookdetails.publishingYear, bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.genre_id AS book_genre_id, bookdetails.Author_id AS book_author_id, authorinfo.Author_id, authorinfo.Author_name, genreinfo.genre_id AS genre_genre_id, genreinfo.genre FROM bookdetails JOIN authorinfo ON bookdetails.Author_id = authorinfo.Author_id JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id;";
 
         try {
 
@@ -224,19 +223,24 @@ public class BookDTO {
                 bdao.setPdf(rs.getString("pdf_path"));
                 bdao.setPageNo(rs.getInt("pageNo"));
                 bdao.setAuthorId(rs.getInt("Author_id"));
-                bdao.setGenreId(rs.getInt("genre_id"));
-                new BookDTO().getGenreName(bdao);
-                new BookDTO().getAuthorName(bdao);
 
+                System.out.println("comming in getbook dto");
+                bdao.setGenreId(rs.getInt("book_genre_id"));
+
+                bdao.setAuthorName(rs.getString("Author_name"));
+                bdao.setGenre(rs.getString("genre"));
+
+//                new BookDTO().getGenreName(bdao);
+//                new BookDTO().getAuthorName(bdao);
                 bookdao.add(bdao);
+
+                System.out.println("coming in database");
                 flag = true;
             }
         } catch (SQLException e) {
 
             System.out.println(e);
             flag = false;
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BookDTO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return flag;
@@ -247,14 +251,13 @@ public class BookDTO {
         ResultSet rs = null;
         boolean flag = false;
         try {
-            String sql = "select * from GenreInfo WHERE Genre_id  = ?";
+            String sql = "select * from GenreInfo WHERE genre_id  = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, bdao.getGenreId());
             rs = ps.executeQuery();
             while (rs.next()) {
                 bdao.setGenre(rs.getString(2));
             }
-
         } catch (SQLException e) {
             System.out.println(e);
         }
@@ -273,11 +276,11 @@ public class BookDTO {
             while (rs.next()) {
                 bdao.setAuthorName(rs.getString(2));
             }
-
         } catch (SQLException e) {
             System.out.println(e);
         }
         return flag;
     }
 
+//    ---------------------------get by genre name
 }

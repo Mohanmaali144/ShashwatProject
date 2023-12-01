@@ -109,9 +109,4 @@ public class BookDAO {
         this.genre = genre;
     }
 
-    @Override
-    public String toString() {
-        return "BookDTO{" + "bookId=" + bookId + ", pageNo=" + pageNo + ", genreId=" + genreId + ", authorId=" + authorId + ", bookName=" + bookName + ", publishingYear=" + publishingYear + ", img=" + img + ", pdf=" + pdf + ", authorName=" + authorName + ", genre=" + genre + '}';
-    }
-
 }
