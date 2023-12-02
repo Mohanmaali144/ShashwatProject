@@ -205,7 +205,11 @@ public class BookDTO {
     public boolean getBook(ArrayList<BookDAO> bookdao) {
         boolean flag = false;
         Connection con = GetConnection.getConnection();
-        String query = "SELECT bookdetails.book_id, bookdetails.bookName, bookdetails.publishingYear, bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.genre_id AS book_genre_id, bookdetails.Author_id AS book_author_id, authorinfo.Author_id, authorinfo.Author_name, genreinfo.genre_id AS genre_genre_id, genreinfo.genre FROM bookdetails JOIN authorinfo ON bookdetails.Author_id = authorinfo.Author_id JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id;";
+        String query = "SELECT bookdetails.book_id, bookdetails.bookName, bookdetails.publishingYear, "
+                + "bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.genre_id AS book_genre_id,"
+                + " bookdetails.Author_id AS book_author_id, authorinfo.Author_id, authorinfo.Author_name, "
+                + "genreinfo.genre_id AS genre_genre_id, genreinfo.genre FROM bookdetails JOIN authorinfo "
+                + "ON bookdetails.Author_id = authorinfo.Author_id JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id;";
 
         try {
 
@@ -230,8 +234,6 @@ public class BookDTO {
                 bdao.setAuthorName(rs.getString("Author_name"));
                 bdao.setGenre(rs.getString("genre"));
                 bookdao.add(bdao);
-
-                System.out.println("coming in database");
                 flag = true;
             }
         } catch (SQLException e) {
@@ -279,5 +281,62 @@ public class BookDTO {
         return flag;
     }
 
-//    ---------------------------get by genre name
+//    ---------------------------get by genre name---------------------
+    public boolean getCategoryBook(ArrayList<BookDAO> bcategory, String category) {
+        Connection con = GetConnection.getConnection();
+        ResultSet rs = null;
+        boolean flag = false;
+        try {
+            String sql = "SELECT \n"
+                    + "    bookdetails.book_id, \n"
+                    + "    bookdetails.bookName, \n"
+                    + "    bookdetails.publishingYear, \n"
+                    + "    bookdetails.pageNo, \n"
+                    + "    bookdetails.img_path, \n"
+                    + "    bookdetails.pdf_path, \n"
+                    + "    bookdetails.genre_id AS book_genre_id,\n"
+                    + "    bookdetails.Author_id AS book_author_id, \n"
+                    + "    authorinfo.Author_id, \n"
+                    + "    authorinfo.Author_name, \n"
+                    + "    genreinfo.genre_id AS genre_genre_id, \n"
+                    + "    genreinfo.genre \n"
+                    + "FROM \n"
+                    + "    bookdetails\n"
+                    + "JOIN \n"
+                    + "    authorinfo ON bookdetails.Author_id = authorinfo.Author_id\n"
+                    + "JOIN \n"
+                    + "    genreinfo ON bookdetails.genre_id = genreinfo.genre_id\n"
+                    + "WHERE \n"
+                    + "    genre = ?;"
+                    + "";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, category);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                BookDAO bdao = new BookDAO();
+                bdao.setBookId(rs.getInt("book_id"));
+                bdao.setBookName(rs.getString("bookName"));
+                bdao.setPublishingYear(rs.getString("publishingYear"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setImg(rs.getString("img_path"));
+                bdao.setPdf(rs.getString("pdf_path"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setAuthorId(rs.getInt("Author_id"));
+
+                System.out.println("comming in getbook dto");
+                bdao.setGenreId(rs.getInt("book_genre_id"));
+
+                bdao.setAuthorName(rs.getString("Author_name"));
+                bdao.setGenre(rs.getString("genre"));
+                bcategory.add(bdao);
+
+                System.out.println("coming in database");
+                flag = true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return flag;
+    }
+
 }

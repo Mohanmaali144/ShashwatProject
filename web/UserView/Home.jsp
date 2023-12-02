@@ -104,7 +104,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
                                     <%for(BookDAO gdao : genredao){%>
-                                    <a style="text-transform:capitalize" class="dropdown-item genre"  href="catgory.jsp" ><%=gdao.getGenre()%></a>
+                                    <a style="text-transform:capitalize" class="dropdown-item genre"  href="../GetCategoryBook?category=<%=gdao.getGenre()%>" ><%=gdao.getGenre()%></a>
                                     <%}%>
                                     <!-- call servlet for logout user -->
                                 </div>

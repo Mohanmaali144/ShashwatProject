@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.shashwat.controller;
 
 import com.shashwat.model.manager.BookDAO;
@@ -10,39 +14,44 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class GetBook extends HttpServlet {
+/**
+ *
+ * @author Mohan_Maali
+ */
+public class GetCategoryBook extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            String category = request.getParameter("category");
+            out.println("" + category);
+
             HttpSession session = request.getSession();
-            ArrayList<BookDAO> bookdao = new ArrayList<>();
+            ArrayList<BookDAO> bcategory = new ArrayList<>();
 
             BookDTO bookdto = new BookDTO();
 
-            if (bookdto.getBook(bookdao)) {
-    
-                session.setAttribute("bookdao", bookdao);
+            if (bookdto.getCategoryBook(bcategory, category)) {
 
-                ArrayList<BookDAO> genredao = bookdto.getGenre();
-               
-                session.setAttribute("genredao", genredao);
                 
-                System.out.println("comming in getbook");
-                response.sendRedirect("./UserView/Home.jsp");
+                session.setAttribute("bcategory", bcategory);
+                response.sendRedirect("./UserView/catgory.jsp");
 
             } else {
                 response.sendRedirect("./UserView/Home.jsp");
             }
-
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
