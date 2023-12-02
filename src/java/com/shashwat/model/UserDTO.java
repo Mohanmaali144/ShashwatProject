@@ -1,5 +1,6 @@
 package com.shashwat.model;
 
+import com.shashwat.model.manager.BookDAO;
 import com.shashwat.service.GetConnection;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.BadPaddingException;
@@ -142,58 +144,118 @@ public class UserDTO {
         return null;
     }
 
-    public boolean addReadingStatus(int status, int bookId,int userId) {
+    public boolean addReadingStatus(int status, int bookId, int userId) {
         boolean wantToRead = false;
         boolean currentlyReading = false;
         boolean alreadyRead = false;
         switch (status) {
-            case 1 -> wantToRead = true;
-            case 2 -> currentlyReading = true;
-            case 3 -> alreadyRead = true;
+            case 1 ->
+                wantToRead = true;
+            case 2 ->
+                currentlyReading = true;
+            case 3 ->
+                alreadyRead = true;
         }
-        boolean check = checkBook(bookId);
-        
-        Connection con = GetConnection.getConnection();
-        String query = "insert into reading_status(user_id,book_id,currently_reading,want_to_read,already_read) values(?,?,?,?,?)";
-        try {
-            
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1,userId);
-            ps.setInt(2, bookId);
-            ps.setBoolean(3,currentlyReading);
-            ps.setBoolean(4,wantToRead);
-            ps.setBoolean(5,alreadyRead);
-            return ps.executeUpdate() > 0;
-        } catch (SQLException e) {
+        boolean check = checkBook(bookId,userId);
+        System.out.println("Check : " + check);
+        if (!check) {
+            Connection con = GetConnection.getConnection();
+            String query = "insert into reading_status(user_id,book_id,currently_reading,want_to_read,already_read) values(?,?,?,?,?)";
+            try {
 
-            System.out.println("some Exception");
-            System.out.println(e);
-            return false;
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setInt(1, userId);
+                ps.setInt(2, bookId);
+                ps.setBoolean(3, currentlyReading);
+                ps.setBoolean(4, wantToRead);
+                ps.setBoolean(5, alreadyRead);
+                return ps.executeUpdate() > 0;
+            } catch (SQLException e) {
+
+                System.out.println("some Exception");
+                System.out.println(e);
+                return false;
+            }
+        }
+        else
+        {
+              Connection con = GetConnection.getConnection();
+            String query = "UPDATE reading_status SET currently_reading=?, want_to_read=?, already_read=? WHERE book_id=? and user_id=?";
+            try {
+
+                PreparedStatement ps = con.prepareStatement(query);
+               
+              
+                ps.setBoolean(1, currentlyReading);
+                ps.setBoolean(2, wantToRead);
+                ps.setBoolean(3, alreadyRead);
+                  ps.setInt(4, bookId);
+                   ps.setInt(5, userId);
+                return ps.executeUpdate() > 0;
+            } catch (SQLException e) {
+
+                System.out.println("some Exception");
+                System.out.println(e);
+                return false;
+            }
         }
 
     }
-    private boolean checkBook(int bookId)
-    {
-         Connection con = GetConnection.getConnection();
-        String query = "select * from reading_status where book_id=?";
+
+    private boolean checkBook(int bookId,int userId) {
+        Connection con = GetConnection.getConnection();
+        String query = "select * from reading_status where book_id=? and user_id=?";
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1,bookId);
+            ps.setInt(1, bookId);
+            ps.setInt(2, userId);
             ResultSet rs = ps.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         } catch (SQLException e) {
 
             System.out.println("some Exception");
             System.out.println(e);
-            return false;
+           
         }
+         return false;
     }
+    
+//    public boolean getStatus(ArrayList<BookDAO> bookDao, String category) {
+//        boolean flag = false;
+//
+//        Connection con = GetConnection.getConnection();
+//        String query = "SELECT * FROM blog WHERE category = ?";
+//
+//        try {
+//            PreparedStatement ps = con.prepareStatement(query);
+//            ps.setString(1, category);
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                BlogDAO blogdao = new BlogDAO();
+//
+//                blogdao.setBlogId(rs.getInt("blog_id"));
+//                blogdao.setTitle(rs.getString("title"));
+//                blogdao.setCategory(rs.getString("category"));
+//                blogdao.setPublicationDate(rs.getString("publication_date"));
+//                blogdao.setContent(rs.getString("content"));
+//                blogdao.setLikes(rs.getInt("likes"));
+//                blogdao.setImgage(rs.getString("img_url"));
+//                bloglist.add(blogdao);
+//                flag = true;
+//            }
+//
+//        } catch (SQLException e) {
+//
+//            System.out.println(e);
+//            flag = false;
+//        }
+//
+//        return flag;
+//    }
 }

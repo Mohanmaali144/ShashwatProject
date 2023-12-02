@@ -1,17 +1,21 @@
-<%-- Document : catgory Created on : 28-Nov-2023, 12:22:13 pm Author : NexGen --%>
+<%-- 
+    Document   : ShowPDF
+    Created on : 02-Dec-2023, 11:41:17 am
+    Author     : Mohan_Maali
+--%>
 
-
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.shashwat.model.manager.*" %>
 <%@page import="java.util.ArrayList" %>
 
 <% ArrayList<BookDAO> bcategory = (ArrayList<BookDAO>) session.getAttribute("bcategory");
 
         ArrayList<BookDAO> genredao = (ArrayList<BookDAO>) session.getAttribute("genredao");
+       String  pdf = request.getParameter("pdf");
 
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+
 
 <%-- Document : Home Created on : 27-Nov-2023, 9:26:36 pm Author : Mohan_Maali --%>
 
@@ -50,6 +54,13 @@
         <title>Home</title>
         <style>
         </style>
+        <script>
+
+            document.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+            });
+
+        </script>
     </head>
 
     <body>
@@ -201,183 +212,85 @@
         </header>
 
         <!-- book catlog end -------------------------------------------------------------->
-        <div class="container">
-            <br>
-            <center>
-                <h3 style="text-transform:capitalize">
-                    <%=bcategory.get(0).getGenre()%>
-                </h3>
-            </center>
-            <br>
-            <div class="row row-cols-lg-5 row-cols-md-3">
-                <% for(BookDAO bdao : bcategory){ %>
+        <div>
+            <embed src="/SHASHWAT/BookPDF/<%=pdf%>#toolbar=0" height="500" width="100%">
+        </div>
 
-                <div class="col mb-4">
-                    <div class="card">
-                        <a href="" data-toggle="modal"
-                           data-target="#bookinfo"><img class="book"
-                                                     src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>"
-                                                     class="card-img-top" alt="Book 1"></a>
-                        <div class="card-body">
-                            <button
-                                class="btn btn-success">Borrrow</button><button
-                                class="btn btn-secondary ml-3"
-                                data-toggle="modal"
-                                data-id="<%=bdao.getBookId()%>"
-                                data-target="#ex<%=bdao.getBookId()%>">More</button>
-                        </div>
+        <!-- book display end  ------------------------------------------------------------------------------ -->
+
+
+
+
+        <footer class="bgfooter text-light">
+            <div class="container">
+                <div class="row">
+                    <!-- Quick Links Section -->
+                    <div class="col-md-4">
+                        <center>
+                            <h5>Quick Links</h5>
+                        </center>
+                        <center>
+                            <ul class="list-unstyled">
+                                <li><a href="Home.jsp">Home</a></li>
+                                <li><a href="catgory.jsp">catgory</a></li>
+                                <li><a href="blog.jsp">Blogs</a></li>
+                                <li><a href="podcast.jsp">Podcast</a></li>
+                                <li><a href="audiobook.jsp">Audio Books</a></li>
+                                <li><a href="tutorial.jsp">Tutorials</a></li>
+                                <li><a href="aboutus.jsp">About Us</a></li>
+                                <li><a href="contactus.jsp">Contact</a></li>
+                            </ul>
+                        </center>
                     </div>
-                    <!--------bookinfo-------------->
 
+                    <!-- Social Handles Section -->
+                    <div class="col-md-4">
+                        <center>
+                            <h5>Social Handles</h5>
+                        </center>
+                        <center>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Facebook</a></li>
+                                <li><a href="#">Twitter</a></li>
+                                <li><a href="#">Instagram</a></li>
+                                <li><a href="#">LinkedIn</a></li>
+                            </ul>
+                        </center>
+                    </div>
 
-                    <div id="ex<%=bdao.getBookId()%>" class="modal fade"
-                         role="dialog">
-                        <div class="modal-dialog">
-                            Modal content
-                            <div class="modal-content">
-
-                                <div class="card mb-3"
-                                     style="max-width: 540px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>"
-                                                 class="img-fluid rounded-start"
-                                                 alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-                                                    <%=bdao.getBookName()%>
-                                                </h5>
-                                                <h6>
-                                                    <%=bdao.getBookName()%>
-                                                </h6>
-                                                <p class="card-text">This is a
-                                                    wider card with supporting
-                                                    text below as a natural
-                                                    lead-in to additional
-                                                    content. This content is a
-                                                    little bit longer.</p>
-                                                <p><i
-                                                        class="fa fa-star p-1"></i><i
-                                                        class="fa fa-star p-1"></i><i
-                                                        class="fa fa-star p-1"></i><i
-                                                        class="fa fa-star-empty p-1"></i><i
-                                                        class="fa fa-star-half-o"></i>
-                                                </p>
-                                                <p class="card-text"><small
-                                                        class="text-muted">Last
-                                                        updated 3 mins
-                                                        ago</small></p>
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-secondary dropdown-toggle"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        Reading Status
-                                                    </button>
-                                                    <div class="dropdown-menu"
-                                                         aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item"
-                                                           href="../ServletName?bookid=<%=bdao.getBookId()%>">Want
-                                                            to Read</a>
-                                                        <a class="dropdown-item"
-                                                           href="../ServletName?bookid=<%=bdao.getBookId()%>">CurrentLy
-                                                            Reading</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <!-- Feedback Form Section -->
+                    <div class="col-md-4">
+                        <center>
+                            <h5>Feedback</h5>
+                        </center>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control"
+                                       placeholder="Your Name">
                             </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <% } %>
-            </div>
-
-            <!-- book display end  ------------------------------------------------------------------------------ -->
-
-
-
-
-            <footer class="bgfooter text-light">
-                <div class="container">
-                    <div class="row">
-                        <!-- Quick Links Section -->
-                        <div class="col-md-4">
-                            <center>
-                                <h5>Quick Links</h5>
-                            </center>
-                            <center>
-                                <ul class="list-unstyled">
-                                    <li><a href="Home.jsp">Home</a></li>
-                                    <li><a href="catgory.jsp">catgory</a></li>
-                                    <li><a href="blog.jsp">Blogs</a></li>
-                                    <li><a href="podcast.jsp">Podcast</a></li>
-                                    <li><a href="audiobook.jsp">Audio Books</a></li>
-                                    <li><a href="tutorial.jsp">Tutorials</a></li>
-                                    <li><a href="aboutus.jsp">About Us</a></li>
-                                    <li><a href="contactus.jsp">Contact</a></li>
-                                </ul>
-                            </center>
-                        </div>
-
-                        <!-- Social Handles Section -->
-                        <div class="col-md-4">
-                            <center>
-                                <h5>Social Handles</h5>
-                            </center>
-                            <center>
-                                <ul class="list-unstyled">
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Instagram</a></li>
-                                    <li><a href="#">LinkedIn</a></li>
-                                </ul>
-                            </center>
-                        </div>
-
-                        <!-- Feedback Form Section -->
-                        <div class="col-md-4">
-                            <center>
-                                <h5>Feedback</h5>
-                            </center>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control"
-                                           placeholder="Your Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control"
-                                           placeholder="Your Email">
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="3"
-                                              placeholder="Your Feedback"></textarea>
-                                </div>
-                                <button type="submit"
-                                        class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control"
+                                       placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3"
+                                          placeholder="Your Feedback"></textarea>
+                            </div>
+                            <button type="submit"
+                                    class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
-            </footer>
-            <!-- footer  -->
-
-            <div style="height: 40px; padding:5px; font-weight: 500;">
-                <center>All Rights & &#169; Reserved by Tech-Phoenix</center>
             </div>
+        </footer>
+        <!-- footer  -->
+
+        <div style="height: 40px; padding:5px; font-weight: 500;">
+            <center>All Rights & &#169; Reserved by Tech-Phoenix</center>
+        </div>
 
 
-            <!-- footer -->
+        <!-- footer -->
 
 
 
