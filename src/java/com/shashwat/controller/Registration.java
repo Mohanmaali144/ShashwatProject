@@ -45,7 +45,7 @@ public class Registration extends HttpServlet {
                     response.sendRedirect("Registration.jsp");
                 }
             } else {
-                response.sendRedirect("Registration.jsp");
+                response.sendRedirect("./UserView/Registration.jsp");
             }
         }
     }

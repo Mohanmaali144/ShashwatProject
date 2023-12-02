@@ -26,14 +26,14 @@ public class UserDTO {
     //    -------login----
     public boolean login(UserDAO udao) {
         Connection con = GetConnection.getConnection();
-        String query = "SELECT * FROM usersinfo WHERE username = ?";
+        String query = "SELECT * FROM usersinfo WHERE userName = ?";
         ResultSet rs;
         boolean b = false;
         try {
 
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, udao.getUsername());
-           
+
             rs = ps.executeQuery();
             if (rs.next()) {
 
@@ -43,7 +43,7 @@ public class UserDTO {
                     b = true;
 
                     udao.setId(rs.getInt("id"));
-                    udao.setFullname(rs.getString("name"));
+                    udao.setFullname(rs.getString("fullname"));
                     udao.setUsername(rs.getString("userName"));
                     udao.setEmail(rs.getString("email"));
                     udao.setMobile(rs.getString("mobile"));
@@ -98,6 +98,7 @@ public class UserDTO {
         } catch (SQLException e) {
 
             System.out.println("some Exception");
+            System.out.println(e);
             result = false;
         }
 
@@ -171,4 +172,58 @@ public class UserDTO {
         return null;
     }
 
+    public boolean addReadingStatus(int status, int bookId,int userId) {
+        boolean wantToRead = false;
+        boolean currentlyReading = false;
+        boolean alreadyRead = false;
+        switch (status) {
+            case 1 -> wantToRead = true;
+            case 2 -> currentlyReading = true;
+            case 3 -> alreadyRead = true;
+        }
+        boolean check = checkBook(bookId);
+        
+        Connection con = GetConnection.getConnection();
+        String query = "insert into reading_status(user_id,book_id,currently_reading,want_to_read,already_read) values(?,?,?,?,?)";
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,userId);
+            ps.setInt(2, bookId);
+            ps.setBoolean(3,currentlyReading);
+            ps.setBoolean(4,wantToRead);
+            ps.setBoolean(5,alreadyRead);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+
+            System.out.println("some Exception");
+            System.out.println(e);
+            return false;
+        }
+
+    }
+    private boolean checkBook(int bookId)
+    {
+         Connection con = GetConnection.getConnection();
+        String query = "select * from reading_status where book_id=?";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1,bookId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        } catch (SQLException e) {
+
+            System.out.println("some Exception");
+            System.out.println(e);
+            return false;
+        }
+    }
 }

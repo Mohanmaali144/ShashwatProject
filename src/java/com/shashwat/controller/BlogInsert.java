@@ -38,7 +38,7 @@ public class BlogInsert extends HttpServlet {
             System.out.println("" + category);
             System.out.println("" + content);
             System.out.println("" + image);
-           
+
             BlogDAO blogdao = new BlogDAO(title, category, content, image);
             BlogDTO blogdto = new BlogDTO();
 

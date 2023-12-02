@@ -26,17 +26,50 @@ public class GetBlog extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            out.println("html");
-
             String category = request.getParameter("category");
+
+            String user = request.getParameter("true");
+            boolean userb = false;
+            if (user != null) {
+                userb = Boolean.parseBoolean(user);
+
+            }
 
             System.out.println("" + category);
             ArrayList<BlogDAO> bloglist = new ArrayList<>();
             HttpSession session = request.getSession();
             BlogDTO blogdto = new BlogDTO();
-            if (blogdto.getBlog(bloglist)) {
-                session.setAttribute("bloglist", bloglist);
+
+            out.println("user");
+            if (userb) {
+
+                out.println("user");
+
+                ArrayList<BlogDAO> userbloglist = new ArrayList<>();
+                int userId = 1;
+
+                if (blogdto.getUserBlog(userbloglist, userId)) {
+                    session.setAttribute("userbloglist", userbloglist);
+
+                    response.sendRedirect("./UserView/blog_1.jsp");
+                } else {
+                    response.sendRedirect("./UserView/Home.jsp");
+
+                }
+
+            } else {
+
+                out.println("users");
+                if (blogdto.getBlog(bloglist, category)) {
+                    session.setAttribute("bloglist", bloglist);
+
+                    response.sendRedirect("./UserView/blog_1.jsp");
+                } else {
+                    response.sendRedirect("./UserView/Home.jsp");
+
+                }
             }
+            out.println("user2");
 
         }
     }

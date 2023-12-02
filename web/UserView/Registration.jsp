@@ -71,18 +71,18 @@
                         <!-- svg icon -->
                     </label>
                 </div>
-                
+
                 <div class="text-filed">
                     <label for="gendar" class="gendar" >Gendar:
                         <label>
-                        <input type="radio" name="gender" id="gendar" value="Male"> Male
-                    </label>
-                    <label>
-                        <input type="radio" name="gender" id="gendar" value="Female"> Female
-                    </label>
-                    <label>
-                        <input type="radio" name="gender" id="gendar" value="Other"> Other
-                    </label>
+                            <input type="radio" name="gender" id="gendar" value="Male"> Male
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" id="gendar" value="Female"> Female
+                        </label>
+                        <label>
+                            <input type="radio" name="gender" id="gendar" value="Other"> Other
+                        </label>
                     </label>
                 </div>
 
