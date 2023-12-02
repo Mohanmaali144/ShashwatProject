@@ -5,6 +5,11 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.admin.*" %>
+<%@page import="com.shashwat.model.manager.*" %>
+<%@page import="com.shashwat.model.*" %>
+<%@page import="java.io.IOException"%>
+<%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +47,7 @@
         <div class="list-group list-group-flush my-3">
             <a href="AdminDashboard.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                     class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="UserInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetUser" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>User info</a>
                       <a href="SubscribedUser.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -52,16 +57,16 @@
                     <a href="BookInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Book info</a>
-                      <a href="PodcastInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                      <a href="../GetPodcast" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa fa-podcast" aria-hidden="true"></i>&nbsp;&nbsp;
                         <i></i>Podcast info</a>
                         <a href="BlogInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;
                           <i></i>Blogs info</a>
-                          <a href="AudioBook.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                          <a href="../GetAudioBooks" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                             <i class="fa fa-headphones" aria-hidden="true"></i>&nbsp;&nbsp;
                             <i></i>Audio Book</a>
-                    <a href="ManagerInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetManager" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Manager info</a>
                      <a href="staticBackdrop" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
@@ -139,18 +144,27 @@
       </thead>
 
       <tbody>
+          
+     <%
+            try{
+            
+            ArrayList<AudioDAO> al = (ArrayList<AudioDAO>) session.getAttribute("al");
+            for(AudioDAO a : al)
+            {
+       %>            
+          
                <tr>
-                <td>101</td>
-                <td>A Promised Land</td>
-                <td> Barack Obama</td>
-                <td>Motivationa</td>
-                <td>YY/MM/DD</td>
-                <td>dfndfdfnlkdfnl</td>
-                <td>abc</td>
-                <td>Hindi</td>
-                <td>Audio_url</td>
-                <td>4</td>
-                <td>4</td>
+                <td><%= a.getAudioId()  %></td>
+                <td><%= a.getTitle()   %></td>
+                <td><%= a.getSpeakerName()  %></td>
+                <td><%= a.getGenre()  %></td>
+                <td><%= a.getReleaseDate()   %></td>
+                <td><%= a.getDescription()  %></td>
+                <td><%= a.getTimeDuration()  %></td>
+                <td><%= a.getLanguage()  %></td>
+                <td><%= a.getUrl()  %></td>
+                <td><%= a.getLikes()  %></td>
+                <td><%= a.getThumbnail()  %></td>
                
                 <!-- block modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,7 +195,8 @@
 </div>
             </tr>
 
-
+ <% } 
+}catch(Exception e){}%> 
 
       </tbody>
 

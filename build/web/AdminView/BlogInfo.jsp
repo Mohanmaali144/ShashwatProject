@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.admin.*" %>
+<%@page import="com.shashwat.model.manager.*" %>
+<%@page import="com.shashwat.model.*" %>
+<%@page import="java.io.IOException"%>
+<%@page import="java.util.ArrayList" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +48,7 @@
         <div class="list-group list-group-flush my-3">
             <a href="AdminDashboard.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                     class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="UserInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetUser" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>User info</a>
                       <a href="SubscribedUser.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -52,16 +58,16 @@
                     <a href="BookInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Book info</a>
-                      <a href="PodcastInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                      <a href="../GetPodcast" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa fa-podcast" aria-hidden="true"></i>&nbsp;&nbsp;
                         <i></i>Podcast info</a>
                         <a href="BlogInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;
                           <i></i>Blogs info</a>
-                          <a href="AudioBook.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                          <a href="../GetAudioBooks" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                             <i class="fa fa-headphones" aria-hidden="true"></i>&nbsp;&nbsp;
                             <i></i>Audio Book</a>
-                    <a href="ManagerInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetManager" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Manager info</a>
                      <a href="staticBackdrop" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
@@ -136,17 +142,27 @@
       </thead>
 
       <tbody>
+          
+          
+           <%
+            try{
+            
+            ArrayList<BlogDAO> al = (ArrayList<BlogDAO>) session.getAttribute("al");
+            for(BlogDAO b : al)
+            {
+       %>   
+          
                <tr>
-                <td>1</td>
-                <td>Infographic</td>
-                <td>john124</td>
-                <td>Graphics</td>
-                <td>YY/MM/DD</td>
-                <td>imageLink</td>
+                <td><%= b.getBlogId()  %></td>
+                <td><%= b.getTitle() %></td>
+                <td><%= b.  %></td>
+                <td><%= b.  %></td>
+                <td><%= b.  %></td>
+                <td><%= b.  %></td>
                 
                 <td>  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">View</button>
                 </td>
-                <td>2</td>
+                <td><%= b.  %></td>
                 <!-- block modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -173,6 +189,8 @@
 </div>
             </tr>
 
+             <% } 
+}catch(Exception e){}%> 
 
 
       </tbody>

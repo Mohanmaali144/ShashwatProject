@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.admin.*" %>
+<%@page import="com.shashwat.model.*" %>
+<%@page import="java.io.IOException"%>
+<%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +46,7 @@
         <div class="list-group list-group-flush my-3">
             <a href="AdminDashboard.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                     class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="UserInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetUser" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>User info</a>
                       <a href="SubscribedUser.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -52,16 +56,16 @@
                     <a href="BookInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Book info</a>
-                      <a href="PodcastInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                      <a href="../GetPodcast" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa fa-podcast" aria-hidden="true"></i>&nbsp;&nbsp;
                         <i></i>Podcast info</a>
                         <a href="BlogInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;
                           <i></i>Blogs info</a>
-                          <a href="AudioBook.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                          <a href="../GetAudioBooks" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                             <i class="fa fa-headphones" aria-hidden="true"></i>&nbsp;&nbsp;
                             <i></i>Audio Book</a>
-                    <a href="ManagerInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetManager" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Manager info</a>
                      <a href="staticBackdrop" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
@@ -128,24 +132,36 @@
           <th scope="col">Email</th>
           <th scope="col">Phone No.</th>
           <th scope="col">Gender</th>
-          <th scope="col">Status</th>
+<!--          <th scope="col">Status</th>-->
           <th scope="col">Block</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr class="bg-white">
-          <td >User ID</td>
-          <td >Fullname</td>  
-          <td >Username</td>  
-          <td >DOB</td>   
-          <td >Email</td>       
-          <td >Phone No.</td>
-          <td >Gender</td>  
-          <td >Status</td>
-          <td ><button class="btn btn-danger ">Block</button></td>
-        </tr>
-        
+          
+    <%
+            try{
+            
+            ArrayList<UserDAO> al = (ArrayList<UserDAO>) session.getAttribute("al");
+            for(UserDAO u : al)
+            {
+       %>       
+          
+      <tr class="bg-white">
+    <td><%= u.getId() %></td>
+    <td><%= u.getFullname() %></td>  
+    <td><%= u.getUsername() %></td>  
+    <td><%= u.getDob() %></td>   
+    <td><%= u.getEmail() %></td>       
+    <td><%= u.getMobile() %></td>
+    <td><%= u.getGender() %></td //>  
+<!--    <td>Status</td> -->
+    <td><button class="btn btn-danger">Block</button></td>
+</tr>     
+
+
+ <% } 
+}catch(Exception e){}%> 
       </tbody>
     </table>
   </div>
@@ -156,14 +172,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-<!--    <script>
-        var el = document.getElementById("wrapper");
-        var toggleButton = document.getElementById("menu-toggle");
 
-        toggleButton.onclick = function () {
-            el.classList.toggle("toggled");
-        };
-    </script>-->
 <script src="js/Toggle.js"><!-- comment --></script >
 </body>
 </html>

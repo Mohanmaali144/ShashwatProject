@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDAO.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/manager/AddBook.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/ManagerView/AddBook.jsp</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDTO.java</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/web/AdminView/SubscribedUser.jsp</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/web/AdminView/BlogInfo.jsp</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/web/AdminView/AdminDashboard.jsp</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/src/java/com/shashwat/model/BlogDAO.java</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/src/java/com/shashwat/controller/GetBlog.java</file>
+            <file>file:/F:/Mohan%20shahshwat/ShashwatProject/web/AdminView/ManagerInfo.jsp</file>
         </group>
     </open-files>
 </project-private>

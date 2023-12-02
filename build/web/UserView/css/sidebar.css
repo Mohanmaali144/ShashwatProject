@@ -31,13 +31,13 @@ nav .logo {
   margin: 0 24px;
 }
 .logo .menu-icon {
-  color: #333;
+  color: #fff;
   font-size: 24px;
   margin-right: 14px;
   cursor: pointer;
 }
 .logo .logo-name {
-  color: #333;
+  color: #fff;
   font-size: 22px;
   font-weight: 500;
 }
@@ -74,16 +74,16 @@ nav.open .sidebar {
   text-decoration: none;
 }
 .lists .nav-link:hover {
-  background-color: #4070f4;
+  background-color: #fff;
 }
 .nav-link .icon {
   margin-right: 14px;
   font-size: 20px;
-  color: #707070;
+  color: #fff;
 }
 .nav-link .link {
   font-size: 16px;
-  color: #707070;
+  color: #fff;
   font-weight: 400;
 }
 .lists .nav-link:hover .icon,

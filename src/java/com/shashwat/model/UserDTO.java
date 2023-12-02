@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.BadPaddingException;
@@ -103,6 +104,35 @@ public class UserDTO {
         return result;
     }
 
+//    --------------------------show data in User table----------------------------------------------------
+
+    public ArrayList<UserDAO> getUser() {
+        Connection con = GetConnection.getConnection();
+        ArrayList<UserDAO> al = new ArrayList<UserDAO>();
+        try {
+            String sql = "select * from usersinfo";
+            PreparedStatement ps = con.prepareStatement(sql);
+            System.out.println("Entered Getmanager");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                UserDAO dao = new UserDAO();
+                dao.setId(rs.getInt("user_id"));
+                dao.setFullname(rs.getString("fullName"));
+                dao.setUsername(rs.getString("userName"));
+                dao.setEmail(rs.getString("email"));
+                dao.setMobile(rs.getString("mobile"));
+                dao.setPassword(rs.getString("password"));
+                dao.setGender(rs.getString("gender"));
+                dao.setDob(rs.getString("dob")); 
+                al.add(dao);
+            }
+            System.out.println("" + al);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return al;
+    }
+    
 //    ------------------password encription--------------------
     public static void setKey(String myKey) {
         try {

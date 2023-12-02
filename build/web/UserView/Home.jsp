@@ -4,13 +4,10 @@
     Author     : Mohan_Maali
 --%>
 
-<<<<<<< HEAD
+
 
 
 <!--mohan maal---------------------i-->
-
-=======
->>>>>>> 3816f6a39e5dead99ff3113d34969173652abd16
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

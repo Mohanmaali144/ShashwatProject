@@ -28,6 +28,38 @@
         <servlet-name>AddBook</servlet-name>
         <servlet-class>com.shashwat.controller.manager.AddBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Adminlogin</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.Adminlogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddManager</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.AddManager</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLoginn</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.AdminLoginn</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManagerInfo</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.ManagerInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetManager</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.GetManager</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetUser</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.GetUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetAudioBooks</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.GetAudioBooks</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetPodcast</servlet-name>
+        <servlet-class>com.shashwat.controller.admin.GetPodcast</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -55,5 +87,37 @@
     <servlet-mapping>
         <servlet-name>AddBook</servlet-name>
         <url-pattern>/AddBook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Adminlogin</servlet-name>
+        <url-pattern>/Adminlogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddManager</servlet-name>
+        <url-pattern>/AddManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLoginn</servlet-name>
+        <url-pattern>/AdminLoginn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManagerInfo</servlet-name>
+        <url-pattern>/ManagerInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetManager</servlet-name>
+        <url-pattern>/GetManager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetUser</servlet-name>
+        <url-pattern>/GetUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetAudioBooks</servlet-name>
+        <url-pattern>/GetAudioBooks</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetPodcast</servlet-name>
+        <url-pattern>/GetPodcast</url-pattern>
     </servlet-mapping>
 </web-app>

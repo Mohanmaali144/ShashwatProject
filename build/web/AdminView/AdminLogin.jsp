@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-
+<script src="js/Registration.js"><!-- comment --></script >
 <body>
 
     <nav class="navbar navbar-light ">
@@ -35,14 +35,16 @@
                 <div class="col-md-6 right">
                     <div class="input-box">
                         <header>Login account</header>
-                        <form action="/SHASHWAT/AdminLogin">
+                        <form action="/SHASHWAT/AdminLoginn" onsubmit="return validate()">
                         <div class="input-field">
-                            <input type="text" class="input" id="name" name="name" required autocomplete="off">
+                            <input type="text" class="input" id="name" name="name" onclick="checkName()" onfocus="checkName()" onkeyup="checkName()" autocomplete="off">
                             <label for="name">Admin Name</label>
+                            <span style="color: red;" id="npdisplay"></span>
                         </div>
                         <div class="input-field">
-                            <input type="text" class="input" id="code" name="code" required >
+                            <input type="text" class="input" id="code" name="code" onclick="checkPassword()" onfocus="checkPassword()" onkeyup="checkPassword()"  >
                             <label for="code">Password</label>
+                            <span style="color: red;" id="pdisplay"></span>
                         </div>
                         <div class="input-field">
                             <input type="submit" class="submit" value="Login">

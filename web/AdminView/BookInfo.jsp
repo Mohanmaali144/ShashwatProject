@@ -42,7 +42,7 @@
         <div class="list-group list-group-flush my-3">
             <a href="AdminDashboard.jsp" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                     class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="UserInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetUser" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>User info</a>
                       <a href="SubscribedUser.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
@@ -52,16 +52,16 @@
                     <a href="BookInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-book" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Book info</a>
-                      <a href="PodcastInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                      <a href="../GetPodcast" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                         <i class="fa fa-podcast" aria-hidden="true"></i>&nbsp;&nbsp;
                         <i></i>Podcast info</a>
                         <a href="BlogInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;
                           <i></i>Blogs info</a>
-                          <a href="AudioBook.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                          <a href="../GetAudioBooks" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                             <i class="fa fa-headphones" aria-hidden="true"></i>&nbsp;&nbsp;
                             <i></i>Audio Book</a>
-                    <a href="ManagerInfo.jsp" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <a href="../GetManager" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                       <i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;&nbsp;
                       <i></i>Manager info</a>
                      <a href="staticBackdrop" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i

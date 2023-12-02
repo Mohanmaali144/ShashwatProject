@@ -1,11 +1,23 @@
 package com.shashwat.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class UserDAO implements Serializable {
 
     private int id;
     private String fullname, username, email, mobile, password, gender, dob;
+    
+//  ArrayList<UserDAO> al = new ArrayList<UserDAO>();
+//
+//    public ArrayList<UserDAO> getAl() {
+//        return al;
+//    }
+//
+//    public void setAl(ArrayList<UserDAO> al) {
+//        this.al = al;
+//    }
+  
 
     public UserDAO() {
     }
