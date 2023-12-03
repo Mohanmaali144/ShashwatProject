@@ -11,7 +11,7 @@
 <% ArrayList<BookDAO> bcategory = (ArrayList<BookDAO>) session.getAttribute("bcategory");
 
         ArrayList<BookDAO> genredao = (ArrayList<BookDAO>) session.getAttribute("genredao");
-       String  pdf = request.getParameter("pdf");
+        String  pdf = request.getParameter("pdf");
 
 %>
 

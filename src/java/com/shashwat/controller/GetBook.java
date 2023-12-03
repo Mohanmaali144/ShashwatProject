@@ -1,5 +1,7 @@
 package com.shashwat.controller;
 
+import com.shashwat.model.Borrow;
+import com.shashwat.model.BorrowDTO;
 import com.shashwat.model.Subscription;
 import com.shashwat.model.SubscriptionDTO;
 import com.shashwat.model.UserDAO;
@@ -43,7 +45,6 @@ public class GetBook extends HttpServlet {
 
 //                subdao.setIsSubscribed(false);
                 SubscriptionDTO subdto = new SubscriptionDTO();
-
                 if (subdto.getSubscription(subdao)) {
                     session.setAttribute("subdao", subdao);
 
@@ -53,6 +54,11 @@ public class GetBook extends HttpServlet {
 
                     response.sendRedirect("./UserView/Home.jsp");
                 }
+
+                BorrowDTO borrowdto = new BorrowDTO();
+                ArrayList<Borrow> borrowdao = new ArrayList<>();
+                borrowdto.getBorrow(borrowdao, udao.getId());
+                session.setAttribute("borrowdao", borrowdao);
 
             } else {
                 response.sendRedirect("./UserView/Home.jsp");

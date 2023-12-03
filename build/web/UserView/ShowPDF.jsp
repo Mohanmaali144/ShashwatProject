@@ -8,13 +8,37 @@
 <%@page import="com.shashwat.model.manager.*" %>
 <%@page import="com.shashwat.model.Subscription" %>
 <%@page import="java.util.ArrayList" %>
+<%@page import="com.shashwat.model.Borrow" %>
 
 
-<%
+<% 
+    
+    
+        String bid = request.getParameter("bookid");
+        int bookid=0;
+        if(bid!=null){
+            bookid = Integer.parseInt(bid);
+          }
+
         Subscription subdao =(Subscription)session.getAttribute("subdao");
-        if(subdao!=null){
-        System.out.println(subdao.isIsSubscribed());
-        if(subdao.isIsSubscribed()){        
+        ArrayList<Borrow> borrowdao =(ArrayList<Borrow>)session.getAttribute("borrowdao"); 
+        boolean flag = false;
+        if(borrowdao!=null){
+         System.out.println("pdf show");
+            for(Borrow borrow: borrowdao){
+
+                    if(borrow.getBookId()==bookid){
+                        flag=true;
+                        break;
+                    }
+                    System.out.println(borrow.getBookId());
+                     System.out.println(bookid);
+                }
+          }
+       
+        if(subdao!=null || flag ){
+        System.out.println("it is subscribed"+subdao.isIsSubscribed());
+        if(subdao.isIsSubscribed() || flag){        
 %>
 <!DOCTYPE html>
 <html lang="en">

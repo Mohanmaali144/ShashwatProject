@@ -44,7 +44,7 @@ public class BorrowDTO {
         return flag;
     }
 
-    public boolean getBorrow(ArrayList<Borrow> borrowdao,int user_id) {
+    public boolean getBorrow(ArrayList<Borrow> borrowdao, int user_id) {
         Connection con = GetConnection.getConnection();
 
         boolean flag = false;
@@ -53,16 +53,18 @@ public class BorrowDTO {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, user_id);
             ResultSet rs = ps.executeQuery();
-            while(rs.next()) {
-                Borrow bdao = new Borrow();               
+            while (rs.next()) {
+                Borrow bdao = new Borrow();
                 bdao.setBookId(rs.getInt("book_id"));
                 bdao.setBorrow_date(rs.getString("borrow_date"));
                 bdao.setBorrow_expiry(rs.getString("borrow_expiry"));
                 bdao.setAmount(rs.getDouble("amount"));
                 bdao.setPeriod(rs.getInt("period"));
                 bdao.setIsBorrowed(rs.getBoolean("isBorrowed"));
+
+                borrowdao.add(bdao);
                 flag = true;
-            } 
+            }
 
         } catch (SQLException e) {
             System.out.println(e);

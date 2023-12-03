@@ -40,19 +40,17 @@ public class AddBorrow extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-          
-            
-            
-             out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
-            
+            int bookid = Integer.parseInt(request.getParameter("bookid"));
+
+            out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
+
             HttpSession session = request.getSession();
-            UserDAO udao =  (UserDAO)session.getAttribute("udao");
-           
-          
+            UserDAO udao = (UserDAO) session.getAttribute("udao");
+
             //  the current date
             LocalDate StartDate = LocalDate.now();
             out.println(StartDate);
-            
+
             String date = StartDate.toString();
             LocalDate current = LocalDate.parse(date);
 
@@ -64,23 +62,21 @@ public class AddBorrow extends HttpServlet {
             double borrowAmmount = 14.0;
             boolean isBorrowed = true;
 
-            out.println(""+exdate);
+            out.println("" + exdate);
             Borrow borrow = new Borrow(date, exdate, borrowAmmount, isBorrowed, timePeriod);
             borrow.setId(udao.getId());
-            borrow.setBookId(1);
+            borrow.setBookId(bookid);
             BorrowDTO borrowdto = new BorrowDTO();
-            
-            
-            out.println(""+exdate);
+
+            out.println("" + exdate);
             if (borrowdto.adBorrow(borrow)) {
                 out.print("succsessfull added in borrow");
-                
-                ArrayList<Borrow> borrowdao = new  ArrayList<>();                
+
+                ArrayList<Borrow> borrowdao = new ArrayList<>();
                 borrowdto.getBorrow(borrowdao, udao.getId());
                 session.setAttribute("borrowdao", borrowdao);
             }
-           
-            
+
             out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
         }
     }

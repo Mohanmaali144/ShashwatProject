@@ -93,7 +93,7 @@
                     <div class="card">
                         <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>"data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>                       
                         <div class="card-body">
-                            <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Borrrow</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
+                            <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Premium(Read)</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
                         </div>
                     </div>
                 </div>
@@ -126,19 +126,19 @@
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=2">CurrentLy Reading</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=3">Already Read</a>
                                                 </div>
-                                                <a class="btn btn-secondary " href="myprofile/subscription?bookid=10">
-                                                    Borrow
-                                                </a>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>   </div>   </div>  
-                        <%
-                    }
-                        %>
+                        </div>   </div>   </div> 
+
+
+                <%
+            }
+                %>
 
             </div>
         </div>
@@ -195,13 +195,13 @@
                     <div class="card">
                         <a href="#bookinfo" data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>
                         <div class="card-body">
-                            <a  class="btn btn-success" href="../AddBorrow">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
+                            <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>bookid=<%=bdao.getBookId()%>">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#exr<%=bdao.getBookId()%>">More</button>
                         </div>
                     </div>
                 </div>
 
 
-                <div id="ex<%=bdao.getBookId()%>" class="modal fade" role="dialog">
+                <div id="exr<%=bdao.getBookId()%>" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         Modal content
                         <div class="modal-content">
@@ -226,7 +226,10 @@
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=1">Want to Read</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=2">CurrentLy Reading</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=3">Already Read</a>
-                                                </div>
+                                                </div>                                              
+                                                <a class="btn btn-secondary " href="../AddBorrow?bookid=<%=bdao.getBookId()%>">
+                                                    Borrow
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
