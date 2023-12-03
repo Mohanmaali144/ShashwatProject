@@ -18,21 +18,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GetBook extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             HttpSession session = request.getSession();
             ArrayList<BookDAO> bookdao = new ArrayList<>();
-            
+
             BookDTO bookdto = new BookDTO();
 
             //             -------------getBook BookDAO 
             if (bookdto.getBook(bookdao)) {
                 session.setAttribute("bookdao", bookdao);
-                
+
                 ArrayList<BookDAO> genredao = bookdto.getGenre();
                 session.setAttribute("genredao", genredao);
 
@@ -40,24 +40,27 @@ public class GetBook extends HttpServlet {
                 Subscription subdao = new Subscription();
                 UserDAO udao = (UserDAO) session.getAttribute("udao");
                 subdao.setId(udao.getId());
-                subdao.setIsSubscribed(false);
+
+//                subdao.setIsSubscribed(false);
                 SubscriptionDTO subdto = new SubscriptionDTO();
-                
+
                 if (subdto.getSubscription(subdao)) {
-                    response.sendRedirect("./UserView/Home.jsp");
                     session.setAttribute("subdao", subdao);
+
+                    response.sendRedirect("./UserView/Home.jsp");
                 } else {
-                    
+                    session.setAttribute("subdao", subdao);
+
                     response.sendRedirect("./UserView/Home.jsp");
                 }
-                
+
             } else {
                 response.sendRedirect("./UserView/Home.jsp");
             }
-            
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
     }
 

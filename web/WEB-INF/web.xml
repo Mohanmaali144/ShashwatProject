@@ -48,6 +48,10 @@
         <servlet-name>AddSubscription</servlet-name>
         <servlet-class>com.shashwat.controller.AddSubscription</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddBorrow</servlet-name>
+        <servlet-class>com.shashwat.controller.AddBorrow</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -95,5 +99,9 @@
     <servlet-mapping>
         <servlet-name>AddSubscription</servlet-name>
         <url-pattern>/AddSubscription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddBorrow</servlet-name>
+        <url-pattern>/AddBorrow</url-pattern>
     </servlet-mapping>
 </web-app>

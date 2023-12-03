@@ -87,7 +87,7 @@
                         </div>
                     </form>
                     <div class="dropdown d-none d-lg-block">
-                        <a href="myprofile/subscription.jsp" id="review">Get
+                        <a href="subscription.jsp" id="review">Get
                             Premium</a>
                     </div>
                     <!-- ------------------------- -->

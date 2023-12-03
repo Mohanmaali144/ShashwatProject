@@ -4,11 +4,13 @@
  */
 package com.shashwat.model.manager;
 
+import com.shashwat.model.UserDAO;
+
 /**
  *
  * @author Mohan_Maali
  */
-public class BookDAO {
+public class BookDAO extends UserDAO {
 
     private int bookId, pageNo, genreId, authorId;
     private String bookName, publishingYear, img, pdf, authorName, genre,discription;

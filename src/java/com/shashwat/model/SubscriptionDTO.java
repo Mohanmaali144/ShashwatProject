@@ -55,13 +55,9 @@ public class SubscriptionDTO {
             String sql = "select * from subscriptionInfo WHERE user_id = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, subdao.getId());
-
-            System.out.println("user id ====    "+subdao.getId());
-            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
-                
                 subdao.setSubs_id(rs.getInt("subs_id"));
                 subdao.setIsSubscribed(rs.getBoolean("isSubscribed"));
                 subdao.setStart_date(rs.getString("start_date"));
@@ -71,15 +67,12 @@ public class SubscriptionDTO {
                 subdao.setSubsAmount(rs.getDouble("subsAmount"));
 
                 System.out.println("get data");
-                flag = true;
-                
-                System.out.println("come in getSubscription");
-
+                flag = true;              
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e);           
             return flag;
         }
-        return flag;
+              return flag;
     }
 }

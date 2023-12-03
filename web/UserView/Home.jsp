@@ -9,10 +9,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.shashwat.model.manager.*"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="com.shashwat.model.Subscription" %>
 
 <%
       
       ArrayList<BookDAO> bookdao = (ArrayList<BookDAO>) session.getAttribute("bookdao");
+      
+        Subscription subdao =(Subscription)session.getAttribute("subdao");
+        if(subdao!=null)
+            System.out.println("home == "+subdao.isIsSubscribed());
+          
 
 %>
 
@@ -189,13 +195,13 @@
                     <div class="card">
                         <a href="#bookinfo" data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>
                         <div class="card-body">
-                             <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
+                            <a  class="btn btn-success" href="../AddBorrow">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
                         </div>
                     </div>
                 </div>
 
-                
-                 <div id="ex<%=bdao.getBookId()%>" class="modal fade" role="dialog">
+
+                <div id="ex<%=bdao.getBookId()%>" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         Modal content
                         <div class="modal-content">
@@ -228,9 +234,9 @@
                             </div>
 
                         </div>   </div>   </div> 
-                
+
                 <%}%>
-                
+
             </div>
         </div>
 
