@@ -93,7 +93,7 @@
                     <div class="card">
                         <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>"data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>                       
                         <div class="card-body">
-                            <a  class="btn btn-success" href="../BookDetails?book=<%=bdao.getBookId()%>">More</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">Borrow</button>
+                            <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
                         </div>
                     </div>
                 </div>
@@ -126,76 +126,19 @@
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=2">CurrentLy Reading</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=3">Already Read</a>
                                                 </div>
-                                                <a class="btn btn-secondary " href="myprofile/subscription?bookid=10">
-                                                    Borrow
-                                                </a>
+
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="modal-footer">
-
-                                        <div class="container mt-5">
-                                            <form>
-                                                <!-- Borrow Date -->
-                                                <div class="mb-3 w-50">
-                                                    <label for="borrowDate" class="form-label">Borrow Date:</label>
-                                                    <input type="text" class="form-control" id="borrowDate" readonly>
-                                                </div>
-
-                                                <!-- Borrow Duration -->
-                                                <div class="mb-3">
-                                                    <label for="borrowDuration" class="form-label">Borrow Duration:</label>
-                                                    <select class="form-select w-50" id="borrowDuration" onchange="updateAmount()">
-                                                        <option value="15" class="w-50">15 days</option>
-                                                        <option value="30" class="w-50">1 month</option>
-                                                    </select>
-                                                </div>
-
-                                                <!-- Borrow Amount -->
-                                                <div class="mb-3 w-50 ">
-                                                    <label for="borrowAmount" class="form-label">Borrow Amount:</label>
-                                                    <input type="text" class="form-control" id="borrowAmount" readonly>
-                                                </div>
-
-                                                <button type="submit" class="btn btn-primary"><a href="subscritpion.jsp" class="text-decoration-none text-light">Pay Amount</a></button>
-                                            </form>
-                                        </div>
-                                        <script>
-                                            // Function to update the amount based on the selected duration
-                                            function updateAmount() {
-                                                const borrowDuration = document.getElementById("borrowDuration").value;
-                                                const borrowAmountField = document.getElementById("borrowAmount");
-
-                                                // Set amount based on the selected duration
-                                                if (borrowDuration === "15") {
-                                                    borrowAmountField.value = "20 rupees";
-                                                } else if (borrowDuration === "30") {
-                                                    borrowAmountField.value = "29 rupees";
-                                                }
-                                            }
-
-                                            // Function to generate system-generated borrow date
-                                            function generateBorrowDate() {
-                                                // Your JavaScript logic to generate the date
-                                                const currentDate = new Date();
-                                                const formattedDate = currentDate.toISOString().slice(0, 10);
-                                                document.getElementById("borrowDate").value = formattedDate;
-                                            }
-
-                                            // Call the function to generate borrow date when the page loads
-                                            window.onload = generateBorrowDate;
-                                        </script>
-
-
                                     </div>
                                 </div>
                             </div>
 
-                        </div>   </div>   </div>  
-                        <%
-                    }
-                        %>
+                        </div>   </div>   </div> 
 
+
+                <%
+            }
+                %>
 
             </div>
         </div>
@@ -252,13 +195,13 @@
                     <div class="card">
                         <a href="#bookinfo" data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>
                         <div class="card-body">
-                            <a  class="btn btn-success" href="../AddBorrow">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">More</button>
+                            <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>bookid=<%=bdao.getBookId()%>">Read</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#exr<%=bdao.getBookId()%>">More</button>
                         </div>
                     </div>
                 </div>
 
 
-                <div id="ex<%=bdao.getBookId()%>" class="modal fade" role="dialog">
+                <div id="exr<%=bdao.getBookId()%>" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                         Modal content
                         <div class="modal-content">
@@ -283,7 +226,10 @@
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=1">Want to Read</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=2">CurrentLy Reading</a>
                                                     <a class="dropdown-item" href="../AddReadingStatus?bookid=<%=bdao.getBookId()%>&test=3">Already Read</a>
-                                                </div>
+                                                </div>                                              
+                                                <a class="btn btn-secondary " href="../AddBorrow?bookid=<%=bdao.getBookId()%>">
+                                                    Borrow
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

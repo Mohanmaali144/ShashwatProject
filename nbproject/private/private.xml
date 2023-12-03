@@ -3,14 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/AddBorrow.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/Borrow.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/Try.jsp</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/ShowPDF.jsp</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDAO.java</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/GetBook.java</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/Login.java</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/manager/BookDTO.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/Subscription.java</file>
-            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/AddSubscription.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/catgory.jsp</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/SubscriptionDTO.java</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/subscription.jsp</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/Home.jsp</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/GetCategoryBook.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/BorrowDTO.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/Subscription.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/controller/AddSubscription.java</file>
+            <file>file:/D:/Shashwat-Project1/SHASHWAT/web/UserView/Navbar.jsp</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/web/ManagerView/AddBook1.jsp</file>
             <file>file:/D:/Shashwat-Project1/SHASHWAT/src/java/com/shashwat/model/BlogDTO.java</file>
         </group>

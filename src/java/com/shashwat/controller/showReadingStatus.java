@@ -1,11 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.shashwat.controller;
 
+import com.shashwat.model.UserDAO;
+import com.shashwat.model.UserDTO;
 import com.shashwat.model.manager.BookDAO;
-import com.shashwat.model.manager.BookDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,43 +12,26 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-/**
- *
- * @author Mohan_Maali
- */
-public class GetCategoryBook extends HttpServlet {
+public class showReadingStatus extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            
-            System.out.println("category ==== =");
-            
-            String category = request.getParameter("category");
-            out.println("" + category);
-
+            int status = Integer.parseInt(request.getParameter("status"));
+            System.out.println("Status : " + status);
             HttpSession session = request.getSession();
-            ArrayList<BookDAO> bcategory = new ArrayList<>();
-
-            BookDTO bookdto = new BookDTO();
-
-            if (bookdto.getCategoryBook(bcategory, category)) {               
-                session.setAttribute("bcategory", bcategory);
-                response.sendRedirect("./UserView/catgory.jsp");
-
+            UserDAO dao = (UserDAO) session.getAttribute("udao");
+            int userId = dao.getId();
+            ArrayList<BookDAO> bookdaostatus = new ArrayList<>();
+            UserDTO dto = new UserDTO();
+            boolean b = dto.getReadingStatus(bookdaostatus, status, userId);
+            if (b) {
+                session.setAttribute("bookdaostatus", bookdaostatus);
+                response.sendRedirect("./UserView/ShowStatus.jsp");
             } else {
-                response.sendRedirect("./UserView/Home.jsp");
+                response.sendRedirect("./UserView/ShowStatus.jsp");
             }
 
         }

@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Mohan_Maali
  */
-public class GetCategoryBook extends HttpServlet {
+public class BookDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +34,22 @@ public class GetCategoryBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            
-            System.out.println("category ==== =");
-            
-            String category = request.getParameter("category");
-            out.println("" + category);
+            int bookId = Integer.parseInt(request.getParameter("book"));
 
             HttpSession session = request.getSession();
-            ArrayList<BookDAO> bcategory = new ArrayList<>();
+            ArrayList<BookDAO> al = new ArrayList<>();
 
             BookDTO bookdto = new BookDTO();
 
-            if (bookdto.getCategoryBook(bcategory, category)) {               
-                session.setAttribute("bcategory", bcategory);
-                response.sendRedirect("./UserView/catgory.jsp");
+            // -=====getBookDetail BookDAO =======
+            if (bookdto.getBookDetail(al, bookId)) {
+                session.setAttribute("bookdetails", al);
+
+                response.sendRedirect("./UserView/BookDetails.jsp");
 
             } else {
                 response.sendRedirect("./UserView/Home.jsp");
             }
-
         }
     }
 

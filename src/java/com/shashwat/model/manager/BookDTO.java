@@ -341,5 +341,54 @@ public class BookDTO {
         }
         return flag;
     }
+    
+    
+//    =============== bookdetails ===================
+    
+    
+     public boolean getBookDetail(ArrayList<BookDAO> bookdao,int bookId) {
+        boolean flag = false;
+        Connection con = GetConnection.getConnection();
+         System.out.println("BookId : "+bookId);
+        String query = "SELECT bookdetails.book_id, bookdetails.bookName, bookdetails.publishingYear, "
+                + "bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.description,bookdetails.freebook, bookdetails.genre_id AS book_genre_id,"
+                + " bookdetails.Author_id AS book_author_id, authorinfo.Author_id, authorinfo.Author_name, "
+                + "genreinfo.genre_id AS genre_genre_id, genreinfo.genre FROM bookdetails JOIN authorinfo "
+                + "ON bookdetails.Author_id = authorinfo.Author_id JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id where book_id=?;";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, bookId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                BookDAO bdao = new BookDAO();
+
+                bdao.setBookId(rs.getInt("book_id"));
+                bdao.setBookName(rs.getString("bookName"));
+                bdao.setPublishingYear(rs.getString("publishingYear"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setImg(rs.getString("img_path"));
+                bdao.setPdf(rs.getString("pdf_path"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setAuthorId(rs.getInt("Author_id"));
+                bdao.setDiscription(rs.getString("description"));
+                bdao.setFreebook(rs.getBoolean("freebook"));
+                System.out.println("comming in getbook dto");
+                bdao.setGenreId(rs.getInt("book_genre_id"));
+
+                bdao.setAuthorName(rs.getString("Author_name"));
+                bdao.setGenre(rs.getString("genre"));
+                bookdao.add(bdao);
+                flag = true;
+            }
+        } catch (SQLException e) {
+
+            System.out.println(e);
+            flag = false;
+        }
+
+        return flag;
+    }
 
 }

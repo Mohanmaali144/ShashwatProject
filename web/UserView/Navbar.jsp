@@ -123,11 +123,13 @@
                                 <div class="dropdown-menu"
                                      aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item"
-                                       href="currentreading.jsp">Current
+                                       href="../showReadingStatus?status=1">Current
                                         Reading</a>
                                     <a class="dropdown-item"
-                                       href="wanttoread.jsp" onclick="">Want
+                                       href="../showReadingStatus?status=2" onclick="">Want
                                         to Read</a>
+                                    <a class="dropdown-item"
+                                       href="../showReadingStatus?status=3" onclick="">Already Read</a>
                                     <!-- call servlet for logout user -->
                                 </div>
                             </li>
@@ -143,8 +145,9 @@
                                      aria-labelledby="navbarDropdownMenuLink">
 
 
-                                    <% if(genredao!=null){ for(BookDAO gdao :
-                                                                            genredao){%>
+                                    <% if(genredao!=null){ 
+                                    
+                                        for(BookDAO gdao :genredao){%>
                                     <a style="text-transform:capitalize"
                                        class="dropdown-item genre"
                                        href="../GetCategoryBook?category=<%=gdao.getGenre()%>">

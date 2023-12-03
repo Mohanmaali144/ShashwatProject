@@ -13,6 +13,9 @@ body {
 }
 nav {
   position: fixed;
+  position: sticky;
+  
+  background-color: rgb(51, 117, 182) !important;
   top: 0;
   left: 0;
   height: 70px;
@@ -20,24 +23,24 @@ nav {
   display: flex;
   align-items: center;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
-.navbar
-{
-    background-color: rgb(51, 117, 182) !important;
-}
+
 nav .logo {
   display: flex;
   align-items: center;
   margin: 0 24px;
+  /* background-color: #e3f2fd; */
+  width: 100%;
 }
 .logo .menu-icon {
-  color: #333;
+  color: #fff;
   font-size: 24px;
   margin-right: 14px;
   cursor: pointer;
 }
 .logo .logo-name {
-  color: #333;
+  color: #fff;
   font-size: 22px;
   font-weight: 500;
 }
@@ -79,11 +82,11 @@ nav.open .sidebar {
 .nav-link .icon {
   margin-right: 14px;
   font-size: 20px;
-  color: #707070;
+  color: #fff;
 }
 .nav-link .link {
   font-size: 16px;
-  color: #707070;
+  color: #fff;
   font-weight: 400;
 }
 .lists .nav-link:hover .icon,
@@ -106,3 +109,12 @@ nav.open ~ .overlay {
   left: 260px;
   pointer-events: auto;
 }
+/* nav menu  */
+.nav-menu
+{
+  height: 50px;
+  width: 50%;
+  background: #000;
+}
+
+

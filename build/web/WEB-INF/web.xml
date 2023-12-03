@@ -52,6 +52,14 @@
         <servlet-name>AddBorrow</servlet-name>
         <servlet-class>com.shashwat.controller.AddBorrow</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookDetails</servlet-name>
+        <servlet-class>com.shashwat.controller.BookDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showReadingStatus</servlet-name>
+        <servlet-class>com.shashwat.controller.showReadingStatus</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -103,5 +111,13 @@
     <servlet-mapping>
         <servlet-name>AddBorrow</servlet-name>
         <url-pattern>/AddBorrow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookDetails</servlet-name>
+        <url-pattern>/BookDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showReadingStatus</servlet-name>
+        <url-pattern>/showReadingStatus</url-pattern>
     </servlet-mapping>
 </web-app>
