@@ -21,7 +21,7 @@ public class BookDTO {
         if (auth != 0 && gen != 0) {
             try {
 
-                String sql = "insert into BookDetails(bookName, publishingYear,pageNo,img_path,pdf_path,genre_id,Author_id) values(?,?,?,?,?,?,?)";
+                String sql = "insert into BookDetails(bookName, publishingYear,pageNo,img_path,pdf_path,genre_id,Author_id, description,freebook) values(?,?,?,?,?,?,?,?,?)";
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, bookdao.getBookName());
                 ps.setString(2, bookdao.getPublishingYear());
@@ -30,6 +30,8 @@ public class BookDTO {
                 ps.setString(5, bookdao.getPdf());
                 ps.setInt(6, gen);
                 ps.setInt(7, auth);
+                ps.setString(8, bookdao.getDiscription());
+                ps.setBoolean(9, bookdao.isFreebook());
                 if (ps.executeUpdate() > 0) {
 
                     System.out.println("Inserted");
@@ -206,7 +208,7 @@ public class BookDTO {
         boolean flag = false;
         Connection con = GetConnection.getConnection();
         String query = "SELECT bookdetails.book_id, bookdetails.bookName, bookdetails.publishingYear, "
-                + "bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.genre_id AS book_genre_id,"
+                + "bookdetails.pageNo, bookdetails.img_path, bookdetails.pdf_path, bookdetails.description,bookdetails.freebook, bookdetails.genre_id AS book_genre_id,"
                 + " bookdetails.Author_id AS book_author_id, authorinfo.Author_id, authorinfo.Author_name, "
                 + "genreinfo.genre_id AS genre_genre_id, genreinfo.genre FROM bookdetails JOIN authorinfo "
                 + "ON bookdetails.Author_id = authorinfo.Author_id JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id;";
@@ -227,7 +229,8 @@ public class BookDTO {
                 bdao.setPdf(rs.getString("pdf_path"));
                 bdao.setPageNo(rs.getInt("pageNo"));
                 bdao.setAuthorId(rs.getInt("Author_id"));
-
+                bdao.setDiscription(rs.getString("description"));
+                bdao.setFreebook(rs.getBoolean("freebook"));
                 System.out.println("comming in getbook dto");
                 bdao.setGenreId(rs.getInt("book_genre_id"));
 

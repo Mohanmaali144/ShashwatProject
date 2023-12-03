@@ -169,16 +169,33 @@
                                     <input type="text" class="form-control" id="bookName" placeholder="Enter book name" name="bookName" required>
                                 </div>
 
+                                <!-- Bookdescription  -->
+                                <div class="form-group">
+                                    <label for="Deiscription">Book Discription</label>
+                                    <input type="text" class="form-control" id="discription" placeholder="Enter book Discription" name="discription" required>
+                                </div>
+
                                 <!-- Publishing Year -->
                                 <div class="form-group">
                                     <label for="publishingYear">Publishing Year</label>
                                     <input type="number" class="form-control" id="publishingYear" placeholder="Enter publishing year" name="py" required>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="pg">Page No</label>
                                     <input type="number" class="form-control" id="pg" placeholder="Enter no.of pages" name="pg" required>
                                 </div>
 
+                                <!------------------->
+                                <div style="width: 80%" class="form-group">
+                                    <label for="pg">Book type</label>
+
+                                    <select class="form-control" id="booktype" name="booktype">                                
+                                         <option value="true">Free</option>
+                                         <option value="false">premium</option>
+                                    </select>                                     
+
+                                </div>
                                 <!-- PDF Link -->
                                 <div class="form-group">
                                     <label for="pdfLink">Upload PDF</label>

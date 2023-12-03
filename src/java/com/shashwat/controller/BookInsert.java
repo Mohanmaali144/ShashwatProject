@@ -14,7 +14,7 @@ public class BookInsert extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            out.println("DOCTYPE html");
+            
 
             String bookName = request.getParameter("");
             String publishingYear = request.getParameter("");

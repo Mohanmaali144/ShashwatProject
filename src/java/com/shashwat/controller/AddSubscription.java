@@ -1,10 +1,6 @@
 package com.shashwat.controller;
 
-import com.shashwat.model.Subscription;
-import com.shashwat.model.SubscriptionDTO;
 import com.shashwat.model.UserDAO;
-import com.shashwat.model.manager.BookDAO;
-import com.shashwat.model.manager.BookDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,51 +8,47 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class GetBook extends HttpServlet {
+import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import com.shashwat.model.Subscription;
+import com.shashwat.model.SubscriptionDTO;
+
+public class AddSubscription extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            out.println("<h1>Servlet AddSubscription at " + request.getContextPath() + "</h1>");
+            
             HttpSession session = request.getSession();
-            ArrayList<BookDAO> bookdao = new ArrayList<>();
+            UserDAO udao = (UserDAO) session.getAttribute("udao");
+
+            //  the current date
+            LocalDate StartDate = LocalDate.now();            
+            out.println(StartDate);            
+            String date = StartDate.toString();
+            LocalDate current = LocalDate.parse(date);
+
+            // Calculate three months later
+            LocalDate subsExpiryDate = current.plusMonths(3);
             
-            BookDTO bookdto = new BookDTO();
-
-            //             -------------getBook BookDAO 
-            if (bookdto.getBook(bookdao)) {
-                session.setAttribute("bookdao", bookdao);
+            String exdate = subsExpiryDate.toString();
+            int subsPeriod = 3;
+            double subAmmount = 199.0;
+            
+            Subscription subdao = new Subscription(subsPeriod, date, exdate, subAmmount);
+            subdao.setId(udao.getId());
+            SubscriptionDTO subdto = new SubscriptionDTO();
+            
+            if (subdto.adSubscription(subdao)) {
                 
-                ArrayList<BookDAO> genredao = bookdto.getGenre();
-                session.setAttribute("genredao", genredao);
-
-//                -------------Subscription dao 
-                Subscription subdao = new Subscription();
-                UserDAO udao = (UserDAO) session.getAttribute("udao");
-                subdao.setId(udao.getId());
-                subdao.setIsSubscribed(false);
-                SubscriptionDTO subdto = new SubscriptionDTO();
-                
-                if (subdto.getSubscription(subdao)) {
-                    response.sendRedirect("./UserView/Home.jsp");
-                    session.setAttribute("subdao", subdao);
-                } else {
-                    
-                    response.sendRedirect("./UserView/Home.jsp");
-                }
-                
-            } else {
-                response.sendRedirect("./UserView/Home.jsp");
+                out.print("succsessfull added");
             }
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
             
         }
     }

@@ -40,6 +40,14 @@
         <servlet-name>GetCategoryBook</servlet-name>
         <servlet-class>com.shashwat.controller.GetCategoryBook</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BorrowBookAdd</servlet-name>
+        <servlet-class>com.shashwat.controller.BorrowBookAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddSubscription</servlet-name>
+        <servlet-class>com.shashwat.controller.AddSubscription</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -79,5 +87,13 @@
     <servlet-mapping>
         <servlet-name>GetCategoryBook</servlet-name>
         <url-pattern>/GetCategoryBook</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BorrowBookAdd</servlet-name>
+        <url-pattern>/BorrowBookAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddSubscription</servlet-name>
+        <url-pattern>/AddSubscription</url-pattern>
     </servlet-mapping>
 </web-app>

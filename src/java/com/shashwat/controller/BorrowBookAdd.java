@@ -1,10 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package com.shashwat.controller;
 
-import com.shashwat.model.Subscription;
-import com.shashwat.model.SubscriptionDTO;
 import com.shashwat.model.UserDAO;
-import com.shashwat.model.manager.BookDAO;
-import com.shashwat.model.manager.BookDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,52 +12,40 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class GetBook extends HttpServlet {
-    
+/**
+ *
+ * @author Mohan_Maali
+ */
+public class BorrowBookAdd extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
+            out.println("<h1>Servlet BorrowBookAdd at " + request.getContextPath() + "</h1>");
+
+            int bookid = Integer.parseInt(request.getParameter("bookid"));
             
             HttpSession session = request.getSession();
-            ArrayList<BookDAO> bookdao = new ArrayList<>();
             
-            BookDTO bookdto = new BookDTO();
-
-            //             -------------getBook BookDAO 
-            if (bookdto.getBook(bookdao)) {
-                session.setAttribute("bookdao", bookdao);
-                
-                ArrayList<BookDAO> genredao = bookdto.getGenre();
-                session.setAttribute("genredao", genredao);
-
-//                -------------Subscription dao 
-                Subscription subdao = new Subscription();
-                UserDAO udao = (UserDAO) session.getAttribute("udao");
-                subdao.setId(udao.getId());
-                subdao.setIsSubscribed(false);
-                SubscriptionDTO subdto = new SubscriptionDTO();
-                
-                if (subdto.getSubscription(subdao)) {
-                    response.sendRedirect("./UserView/Home.jsp");
-                    session.setAttribute("subdao", subdao);
-                } else {
-                    
-                    response.sendRedirect("./UserView/Home.jsp");
-                }
-                
-            } else {
-                response.sendRedirect("./UserView/Home.jsp");
-            }
+            UserDAO  udao = (UserDAO)session.getAttribute("udao");
+            int userid = udao.getId();
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GetBook.class.getName()).log(Level.SEVERE, null, ex);
+           out.println(bookid);
+            out.print(userid);
             
+           
         }
     }
 

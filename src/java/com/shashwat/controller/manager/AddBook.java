@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.shashwat.controller.manager;
 
 import java.io.IOException;
@@ -17,10 +13,6 @@ import com.shashwat.model.manager.BookDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Mohan_Maali
- */
 @WebServlet(name = "AddBook")
 public class AddBook extends HttpServlet {
 
@@ -32,11 +24,13 @@ public class AddBook extends HttpServlet {
             String authorName = request.getParameter("authorName");
             String genre = request.getParameter("genre");
             String bookName = request.getParameter("bookName");
+
+            String discription = request.getParameter("discription");
             String py = request.getParameter("py");
             int pg = Integer.parseInt(request.getParameter("pg"));
             String bookImg = request.getParameter("bookImg");
             String pdf = request.getParameter("pdf");
-
+            boolean booktype = Boolean.parseBoolean(request.getParameter("booktype"));
             BookDAO bookdao = new BookDAO();
             BookDTO dto = new BookDTO();
             bookdao.setAuthorName(authorName);
@@ -46,6 +40,8 @@ public class AddBook extends HttpServlet {
             bookdao.setPageNo(pg);
             bookdao.setImg(bookImg);
             bookdao.setPdf(pdf);
+            bookdao.setDiscription(discription);
+            bookdao.setFreebook(booktype);
 
             dto.addBook(bookdao);
 

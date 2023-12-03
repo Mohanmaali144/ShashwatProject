@@ -53,7 +53,8 @@ public class Login extends HttpServlet {
                 response.sendRedirect("GetBook");
 //                response.sendRedirect("./UserView/Home.jsp");
             } else {
-                response.sendRedirect("Login.jsp");
+                
+                  response.sendRedirect("./UserView/Login.jsp");
             }
 
         }

@@ -11,12 +11,13 @@ package com.shashwat.model.manager;
 public class BookDAO {
 
     private int bookId, pageNo, genreId, authorId;
-    private String bookName, publishingYear, img, pdf, authorName, genre;
+    private String bookName, publishingYear, img, pdf, authorName, genre,discription;
+    boolean freebook;
 
     public BookDAO() {
     }
 
-    public BookDAO(int pageNo, int genreId, int authorId, String bookName, String publishingYear, String img, String pdf, String authorName, String genre) {
+    public BookDAO(int pageNo, int genreId, int authorId, String bookName, String publishingYear, String img, String pdf, String authorName, String genre,String discription,boolean freebook) {
 
         this.pageNo = pageNo;
         this.genreId = genreId;
@@ -27,6 +28,24 @@ public class BookDAO {
         this.pdf = pdf;
         this.authorName = authorName;
         this.genre = genre;
+        this.discription = discription;
+        this.freebook = freebook;
+    }
+
+    public boolean isFreebook() {
+        return freebook;
+    }
+
+    public void setFreebook(boolean freebook) {
+        this.freebook = freebook;
+    }
+
+    public String getDiscription() {
+        return discription;
+    }
+
+    public void setDiscription(String discription) {
+        this.discription = discription;
     }
 
     public int getBookId() {
