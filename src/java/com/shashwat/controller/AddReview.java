@@ -4,12 +4,8 @@
  */
 package com.shashwat.controller;
 
-import com.shashwat.model.Borrow;
-import com.shashwat.model.BorrowDTO;
-import com.shashwat.model.Subscription;
-import com.shashwat.model.SubscriptionDTO;
 import com.shashwat.model.UserDAO;
-import com.shashwat.model.manager.BookDAO;
+import com.shashwat.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -17,14 +13,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  *
  * @author Mohan_Maali
  */
-public class AddBorrow extends HttpServlet {
+public class AddReview extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,53 +34,31 @@ public class AddBorrow extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            String bookid1 = request.getParameter("bookid");
-            int bookid = 0;
-            if (bookid1 != null) {
-                bookid = Integer.parseInt(bookid1);
-            }
-            out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
-
+            String bookid = request.getParameter("bookid");
+            String review = request.getParameter("review");
+            String rating = request.getParameter("rating");
             HttpSession session = request.getSession();
+
             UserDAO udao = (UserDAO) session.getAttribute("udao");
 
-            //  the current date
-            LocalDate StartDate = LocalDate.now();
-            out.println(StartDate);
+            int userid = udao.getId();
+            int bid = 0;
+            int rat = 0;
+            if (bookid != null) {
+                rat = Integer.parseInt(rating);
+                bid = Integer.parseInt(bookid);
+            }
+            UserDTO udto = new UserDTO();
 
-            String date = StartDate.toString();
-            LocalDate current = LocalDate.parse(date);
+            if (udto.addReview(bid, userid, review, rat)) {
 
-            // Calculate three months later
-            LocalDate borrowExpiryDate = current.plusDays(15);
-            String exdate = borrowExpiryDate.toString();
+                response.sendRedirect("./UserView/BookDetails.jsp");
 
-            int timePeriod = Integer.parseInt(request.getParameter("timePeriod"));
-
-            double borrowAmmount = timePeriod / 2;
-            boolean isBorrowed = true;
-
-            out.println("" + exdate);
-            Borrow borrow = new Borrow(date, exdate, borrowAmmount, isBorrowed, timePeriod);
-            borrow.setId(udao.getId());
-            borrow.setBookId(bookid);
-            BorrowDTO borrowdto = new BorrowDTO();
-
-            out.println("" + exdate);
-            if (borrowdto.adBorrow(borrow)) {
-                out.print("succsessfull added in borrow");
-
-                ArrayList<Borrow> borrowdao = new ArrayList<>();
-                borrowdto.getBorrow(borrowdao, udao.getId());
-                session.setAttribute("borrowdao", borrowdao);
-
-                response.sendRedirect("./UserView/Home.jsp");
             } else {
-
                 response.sendRedirect("./UserView/Home.jsp");
+
             }
 
-            out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
         }
     }
 

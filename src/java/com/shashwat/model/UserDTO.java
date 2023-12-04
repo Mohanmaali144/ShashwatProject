@@ -20,7 +20,7 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 public class UserDTO {
-    
+
     private static SecretKeySpec secretKey;
     private static byte[] key;
 
@@ -31,18 +31,18 @@ public class UserDTO {
         ResultSet rs;
         boolean b = false;
         try {
-            
+
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, udao.getUsername());
-            
+
             rs = ps.executeQuery();
             if (rs.next()) {
-                
+
                 String encryptedPasswordFromDB = rs.getString("password"); // Get the encrypted password from the database
                 String decryptedPassword = decrypt(encryptedPasswordFromDB); // Decrypt the password from the database
                 if (decryptedPassword.equals(udao.getPassword())) { // Compare the decrypted password with the input password
                     b = true;
-                    
+
                     udao.setId(rs.getInt("id"));
                     udao.setFullname(rs.getString("fullname"));
                     udao.setUsername(rs.getString("userName"));
@@ -50,27 +50,27 @@ public class UserDTO {
                     udao.setMobile(rs.getString("mobile"));
                     udao.setGender(rs.getString("gender"));
                     udao.setPassword(decryptedPassword);
-                    
+
                 }
                 return b;
             }
-            
+
         } catch (SQLException ex) {
-            
+
             System.out.println("some Exception");
-            
+
             System.out.println("" + ex);
             return b;
-            
+
         } finally {
-            
+
             try {
                 con.close();
             } catch (SQLException ex) {
-                
+
             }
         }
-        
+
         return b;
     }
 
@@ -81,7 +81,7 @@ public class UserDTO {
         boolean result = false;
         try {
             String encryptPassword = encrypt(udao.getPassword());
-            
+
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, udao.getFullname());
             ps.setString(2, udao.getUsername());
@@ -90,19 +90,19 @@ public class UserDTO {
             ps.setString(5, udao.getGender());
             ps.setString(6, encryptPassword);
             ps.setString(7, udao.getDob());
-            
+
             if (ps.executeUpdate() > 0) {
-                
+
                 result = true;
             }
-            
+
         } catch (SQLException e) {
-            
+
             System.out.println("some Exception");
             System.out.println(e);
             result = false;
         }
-        
+
         return result;
     }
 
@@ -117,7 +117,7 @@ public class UserDTO {
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
         }
     }
-    
+
     public static String encrypt(String strToEncrypt) {
         try {
             setKey("encryptionKey"); // You can modify the encryption key here
@@ -129,7 +129,7 @@ public class UserDTO {
         }
         return null;
     }
-    
+
     public static String decrypt(String strToDecrypt) {
         try {
             setKey("encryptionKey"); // You can modify the encryption key here
@@ -140,10 +140,10 @@ public class UserDTO {
         } catch (InvalidKeyException | NoSuchAlgorithmException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException e) {
             System.out.println("Error while decrypting: " + e.toString());
         }
-        
+
         return null;
     }
-    
+
     public boolean addReadingStatus(int status, int bookId, int userId) {
         boolean wantToRead = false;
         boolean currentlyReading = false;
@@ -162,7 +162,7 @@ public class UserDTO {
             Connection con = GetConnection.getConnection();
             String query = "insert into reading_status(user_id,book_id,currently_reading,want_to_read,already_read) values(?,?,?,?,?)";
             try {
-                
+
                 PreparedStatement ps = con.prepareStatement(query);
                 ps.setInt(1, userId);
                 ps.setInt(2, bookId);
@@ -171,7 +171,7 @@ public class UserDTO {
                 ps.setBoolean(5, alreadyRead);
                 return ps.executeUpdate() > 0;
             } catch (SQLException e) {
-                
+
                 System.out.println("some Exception");
                 System.out.println(e);
                 return false;
@@ -180,9 +180,9 @@ public class UserDTO {
             Connection con = GetConnection.getConnection();
             String query = "UPDATE reading_status SET currently_reading=?, want_to_read=?, already_read=? WHERE book_id=? and user_id=?";
             try {
-                
+
                 PreparedStatement ps = con.prepareStatement(query);
-                
+
                 ps.setBoolean(1, currentlyReading);
                 ps.setBoolean(2, wantToRead);
                 ps.setBoolean(3, alreadyRead);
@@ -190,20 +190,20 @@ public class UserDTO {
                 ps.setInt(5, userId);
                 return ps.executeUpdate() > 0;
             } catch (SQLException e) {
-                
+
                 System.out.println("some Exception");
                 System.out.println(e);
                 return false;
             }
         }
-        
+
     }
-    
+
     private boolean checkBook(int bookId, int userId) {
         Connection con = GetConnection.getConnection();
         String query = "select * from reading_status where book_id=? and user_id=?";
         try {
-            
+
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, bookId);
             ps.setInt(2, userId);
@@ -214,14 +214,14 @@ public class UserDTO {
                 return false;
             }
         } catch (SQLException e) {
-            
+
             System.out.println("some Exception");
             System.out.println(e);
-            
+
         }
         return false;
     }
-    
+
     public boolean getReadingStatus(ArrayList<BookDAO> bookDao, int status, int userId) {
         boolean flag = false;
         String column = null;
@@ -242,11 +242,11 @@ public class UserDTO {
             ps.setInt(1, userId);
             System.out.println("HEYYYYYYY");
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-                
+
                 BookDAO bdao = new BookDAO();
-                
+
                 bdao.setBookId(rs.getInt("book_id"));
                 bdao.setBookName(rs.getString("bookName"));
                 bdao.setPublishingYear(rs.getString("publishingYear"));
@@ -261,13 +261,88 @@ public class UserDTO {
                 bookDao.add(bdao);
                 flag = true;
             }
-            
+
         } catch (SQLException e) {
-            
+
             System.out.println(e);
             flag = false;
         }
-        
+
         return flag;
+    }
+
+//    --------------
+    public ArrayList<BookDAO> search(String search) {
+        System.out.println("Dto" + search);
+        ArrayList<BookDAO> bookdao = new ArrayList<BookDAO>();
+        Connection con = GetConnection.getConnection();
+        BookDAO dao = null;
+        try {
+
+            String sql = "SELECT bookdetails.* FROM bookdetails "
+                    + "JOIN genreinfo ON bookdetails.genre_id = genreinfo.genre_id "
+                    + "JOIN authorinfo ON bookdetails.author_id = authorinfo.author_id "
+                    + "WHERE bookdetails.bookName LIKE ? OR genreinfo.genre LIKE ? OR authorinfo.Author_name LIKE ?";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, "%" + search + "%");
+            preparedStatement.setString(2, "%" + search + "%");
+            preparedStatement.setString(3, "%" + search + "%");
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                // Retrieve data from the result set
+                BookDAO bdao = new BookDAO();
+
+                bdao.setBookId(rs.getInt("book_id"));
+                bdao.setBookName(rs.getString("bookName"));
+                bdao.setPublishingYear(rs.getString("publishingYear"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setImg(rs.getString("img_path"));
+                bdao.setPdf(rs.getString("pdf_path"));
+                bdao.setPageNo(rs.getInt("pageNo"));
+                bdao.setAuthorId(rs.getInt("Author_id"));
+                bdao.setDiscription(rs.getString("description"));
+                bdao.setFreebook(rs.getBoolean("freebook"));
+                System.out.println("comming in getbook dto");
+                bdao.setGenreId(rs.getInt("genre_id"));
+
+                bookdao.add(bdao);
+
+            }
+            System.out.println("bookdao");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bookdao;
+    }
+
+//    ---------------------
+    public boolean addReview(int bookId, int userId, String review, int rating) {
+        Connection con = GetConnection.getConnection();
+        String query = "INSERT INTO review (book_id,user_id,review,rating) values(?,?,?,?)";
+        try {
+
+            PreparedStatement ps = con.prepareStatement(query);
+
+            ps.setInt(1, bookId);
+            ps.setInt(2, userId);
+            ps.setString(3, review);
+            ps.setInt(4, rating);
+
+            if (ps.executeUpdate() > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+
+            System.out.println("some Exception");
+            System.out.println(e);
+
+        }
+        return false;
     }
 }

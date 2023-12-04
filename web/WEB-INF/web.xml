@@ -60,6 +60,14 @@
         <servlet-name>showReadingStatus</servlet-name>
         <servlet-class>com.shashwat.controller.showReadingStatus</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>com.shashwat.controller.Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddReview</servlet-name>
+        <servlet-class>com.shashwat.controller.AddReview</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -119,5 +127,13 @@
     <servlet-mapping>
         <servlet-name>showReadingStatus</servlet-name>
         <url-pattern>/showReadingStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddReview</servlet-name>
+        <url-pattern>/AddReview</url-pattern>
     </servlet-mapping>
 </web-app>

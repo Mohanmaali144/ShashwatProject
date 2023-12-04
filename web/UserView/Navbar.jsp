@@ -77,10 +77,10 @@
                             data-toggle="collapse" data-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <form
+                    <form action="../Search"
                         class="form-inline mx-auto d-flex justify-content-center d-lg-inline">
                         <div class="input-group">
-                            <input id="searchbar" class="form-control" type="search"
+                            <input id="searchbar" class="form-control" type="search" name="search"
                                    placeholder="Search" aria-label="Search">
                             <button type="submit" id="searchbtn"><i
                                     class="fa fa-search"></i></button>

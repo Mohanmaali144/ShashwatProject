@@ -135,7 +135,7 @@
                                     <div class="modal-footer">
 
                                         <div class="container mt-5">
-                                            <form>
+                                            <form action="../AddBorrow">
                                                 <!-- Borrow Date -->
                                                 <div class="mb-3 w-50">
                                                     <label for="borrowDate" class="form-label">Borrow Date:</label>
@@ -145,7 +145,7 @@
                                                 <!-- Borrow Duration -->
                                                 <div class="mb-3">
                                                     <label for="borrowDuration" class="form-label">Borrow Duration:</label>
-                                                    <select class="form-select w-50" id="borrowDuration" onchange="updateAmount()">
+                                                    <select name="timePeriod" class="form-select w-50" id="borrowDuration" onchange="updateAmount()">
                                                         <option value="15" class="w-50">15 days</option>
                                                         <option value="30" class="w-50">1 month</option>
                                                     </select>
@@ -154,10 +154,11 @@
                                                 <!-- Borrow Amount -->
                                                 <div class="mb-3 w-50 ">
                                                     <label for="borrowAmount" class="form-label">Borrow Amount:</label>
-                                                    <input type="text" class="form-control" id="borrowAmount" readonly>
+                                                    <input name="amount" type="text" class="form-control" id="borrowAmount" readonly>
+                                                    <input value="<%=bdao.getBookId()%>" name="bookid" type="hidden" class="form-control" id="borrowAmount" readonly>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary"><a href="subscritpion.jsp" class="text-decoration-none text-light">Pay Amount</a></button>
+                                                <button type="submit" class="btn btn-primary">Pay Amount</button>
                                             </form>
                                         </div>
                                         <script>
@@ -168,9 +169,9 @@
 
                                                 // Set amount based on the selected duration
                                                 if (borrowDuration === "15") {
-                                                    borrowAmountField.value = "20 rupees";
+                                                    borrowAmountField.value = "10 rupees";
                                                 } else if (borrowDuration === "30") {
-                                                    borrowAmountField.value = "29 rupees";
+                                                    borrowAmountField.value = "20 rupees";
                                                 }
                                             }
 

@@ -13,10 +13,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-       
-     
-        
+
+
+
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="css/Review.css">
         <style>
             /*@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=M+PLUS+Rounded+1c&family=Poppins:wght@100;300;400;600&display=swap');*/
             .book-show
@@ -167,6 +168,67 @@
                 } */
 
             }
+            /*-----------------------------*/
+
+
+
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.7);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal-content {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 400px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+            }
+
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 16px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            button {
+
+                color: white;
+
+                border-radius: 10px !important;
+                background-color: #4978F0;
+                padding: 6px 13px;
+            }
+
+            button:hover {
+                background-color: #4978F0;
+            }
+
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+
+            /*--------------------------*/
         </style>
 
         <link
@@ -178,11 +240,16 @@
       
       ArrayList<BookDAO> bookdao = (ArrayList<BookDAO>) session.getAttribute("bookdetails");
 
+
+        int bookidm =  0;
+        
         %>
     </head>
     <body>
         <%
                            for(BookDAO bdao : bookdao){
+                           
+                            bookidm = bdao.getBookId();
         %>
         <section class="book-show">
 
@@ -235,15 +302,63 @@
                 </div>
 
                 <div class="d-flex justify-content-center w-100 justify-content-around ">
-                    <a href="" class="text-decoration-none btn">Read</a>
+                    <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>&bookid=<%=bdao.getBookId()%>" class="text-decoration-none btn">Read</a>
                     <a href="" class="text-decoration-none btn">Borrow</a>
-                    <a href="" class="text-decoration-none btn">Review</a>
+                    <!--<a href="" class="text-decoration-none btn">Review</a>-->
+                    <button  class="text-decoration-none btn" onclick="openModal()">Review</button>
+
                 </div>
             </div>
 
 
         </section>
         <%}%>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+
+                <form action="../AddReview" id="bookReviewForm">
+                    <label for="review">Your Review About The Book:</label>
+                    <textarea style="color: black;" id="review" name="review" rows="4" required></textarea>
+
+                    <label for="rating">Rating (1-5):</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+                    <input type="hidden"  name="bookid"  value="<%=bookidm%>">
+                    <button type="submit" onclick="submitReview()">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function openModal() {
+                document.getElementById("myModal").style.display = "block";
+            }
+
+            function closeModal() {
+                document.getElementById("myModal").style.display = "none";
+            }
+
+            function submitReview() {
+                // Get form values
+                var bookTitle = document.getElementById("bookTitle").value;
+                var authorName = document.getElementById("authorName").value;
+                var review = document.getElementById("review").value;
+                var rating = document.getElementById("rating").value;
+
+                // Perform validation if needed
+
+                // Display the submitted values (you can send them to the server in a real-world application)
+                alert("Review Submitted!\n\nBook Title: " + bookTitle + "\nAuthor Name: " + authorName + "\nReview: " + review + "\nRating: " + rating);
+
+                // Close the modal after submission
+                closeModal();
+            }
+        </script>
+
+        <!--yeh js aur modal-->
+
 
         <%@include file="Footer.jsp" %>
          </body>

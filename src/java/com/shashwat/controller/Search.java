@@ -4,11 +4,7 @@
  */
 package com.shashwat.controller;
 
-import com.shashwat.model.Borrow;
-import com.shashwat.model.BorrowDTO;
-import com.shashwat.model.Subscription;
-import com.shashwat.model.SubscriptionDTO;
-import com.shashwat.model.UserDAO;
+import com.shashwat.model.UserDTO;
 import com.shashwat.model.manager.BookDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,14 +13,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
  *
  * @author Mohan_Maali
  */
-public class AddBorrow extends HttpServlet {
+public class Search extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,54 +34,19 @@ public class AddBorrow extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
 
-            String bookid1 = request.getParameter("bookid");
-            int bookid = 0;
-            if (bookid1 != null) {
-                bookid = Integer.parseInt(bookid1);
+            String searchItem = request.getParameter("search");
+//         out.println(searchItem);
+            ArrayList<BookDAO> bookdao = new ArrayList<>();
+            UserDTO dto = new UserDTO();
+            ArrayList<BookDAO> b = dto.search(searchItem);
+//            System.out.println("Servlet : " + b.getFirst.getBookName());
+            if (b != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("searchItem", b);
+                response.sendRedirect("./UserView/search.jsp");
             }
-            out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
-
-            HttpSession session = request.getSession();
-            UserDAO udao = (UserDAO) session.getAttribute("udao");
-
-            //  the current date
-            LocalDate StartDate = LocalDate.now();
-            out.println(StartDate);
-
-            String date = StartDate.toString();
-            LocalDate current = LocalDate.parse(date);
-
-            // Calculate three months later
-            LocalDate borrowExpiryDate = current.plusDays(15);
-            String exdate = borrowExpiryDate.toString();
-
-            int timePeriod = Integer.parseInt(request.getParameter("timePeriod"));
-
-            double borrowAmmount = timePeriod / 2;
-            boolean isBorrowed = true;
-
-            out.println("" + exdate);
-            Borrow borrow = new Borrow(date, exdate, borrowAmmount, isBorrowed, timePeriod);
-            borrow.setId(udao.getId());
-            borrow.setBookId(bookid);
-            BorrowDTO borrowdto = new BorrowDTO();
-
-            out.println("" + exdate);
-            if (borrowdto.adBorrow(borrow)) {
-                out.print("succsessfull added in borrow");
-
-                ArrayList<Borrow> borrowdao = new ArrayList<>();
-                borrowdto.getBorrow(borrowdao, udao.getId());
-                session.setAttribute("borrowdao", borrowdao);
-
-                response.sendRedirect("./UserView/Home.jsp");
-            } else {
-
-                response.sendRedirect("./UserView/Home.jsp");
-            }
-
-            out.println("<h1>Servlet AddBorrow at " + request.getContextPath() + "</h1>");
         }
     }
 
