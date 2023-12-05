@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +33,7 @@ public class BlogInsert extends HttpServlet {
             String title = request.getParameter("title");
             String category = request.getParameter("category");
             String content = request.getParameter("content");
-            String image = request.getParameter("image");
+            String image = request.getParameter("thumbnail");
 
             System.out.println("" + title);
             System.out.println("" + category);
@@ -42,13 +43,24 @@ public class BlogInsert extends HttpServlet {
             BlogDAO blogdao = new BlogDAO(title, category, content, image);
             BlogDTO blogdto = new BlogDTO();
 
-            System.out.println("1");
             HttpSession session = request.getSession();
 
             UserDAO udao = (UserDAO) session.getAttribute("udao");
             System.out.println("2");
-            blogdto.insertBlog(blogdao, 1);
+            blogdto.insertBlog(blogdao, udao.getId());
             System.out.println("3");
+
+//                ==================getBlog===============================
+            ArrayList<BlogDAO> userblog = new ArrayList<>();
+            if (BlogDTO.getUserBlog(userblog, udao.getId())) {
+
+                session.setAttribute("userblog", userblog);
+                response.sendRedirect("./UserView/myblog.jsp");
+            } else {
+                response.sendRedirect("./UserView/myblog.jsp");
+            }
+
+//            response.sendRedirect("./UserView/myblog.jsp");
 
         }
     }

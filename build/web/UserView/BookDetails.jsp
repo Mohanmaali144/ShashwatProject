@@ -294,7 +294,7 @@
                         <%=bdao.getDiscription()%>
                     </P>
                 </div>
-                <div class="details-books h-25 p-3 w-100 d-flex justify-content-around">
+                <div class="details-books h-25 p-3 w-100 d-flex justify-content-around " style="margin-top:100px;">
                     <span style="color: black; font-size: 16px; font-style: bold;">Genre : <%=bdao.getGenre()%></span>
                     <!-- only display -->
                     <span style="color: black; font-size: 16px; font-style: bold">Publishing Year : <%=bdao.getPublishingYear()%></span>

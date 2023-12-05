@@ -67,12 +67,14 @@ public class SubscriptionDTO {
                 subdao.setSubsAmount(rs.getDouble("subsAmount"));
 
                 System.out.println("get data");
-                flag = true;              
+
+                System.out.println("subscription============");
+                flag = true;
             }
         } catch (SQLException e) {
-            System.out.println(e);           
+            System.out.println(e);
             return flag;
         }
-              return flag;
+        return flag;
     }
 }

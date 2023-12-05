@@ -23,7 +23,7 @@ public class Registration extends HttpServlet {
             String mobile = request.getParameter("mobile");
 
 //     ----- -------------------
-            String gender = "male";
+            String gender = request.getParameter("gender");
 //    --------------------------       
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");

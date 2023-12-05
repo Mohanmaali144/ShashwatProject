@@ -27,7 +27,7 @@
     <!-- book catlog end ------------------------------------------------------------ -->
     <div class="container">
         <br>
-        <center><h3>Trending</h3></center>
+        <center><h3></h3></center>
         <br>
         <div class="row row-cols-lg-5 row-cols-md-3">
             <%
@@ -38,8 +38,9 @@
                 <div class="card">
                     <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>"data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>                       
                     <div class="card-body">
-                        <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Borrrow</a>
+                        
                         <form action="../BookDetails">
+                        <a  class="btn btn-success" href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>">Borrrow</a> 
                             <button class="btn btn-secondary ml-3" name="book"   value="<%=bdao.getBookId()%>" type="submit">More</button>
                         </form>
                     </div>

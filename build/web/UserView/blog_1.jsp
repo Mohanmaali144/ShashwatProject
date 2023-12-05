@@ -45,7 +45,7 @@
         <%@include file="Navbar.jsp" %>
 
 
-    <center><h3><%=bloglist.get(0).getCategory()%>  New Blog</h3></center>
+    <center><h3 style="text-transform: capitalize ;"><%=bloglist.get(0).getCategory()%></h3></center>
     <!--Slide bar started ------------------------------------------------------------ -->
     <div class="background">
         <div class="centering">
@@ -64,7 +64,7 @@
                              >
                     </figure>
                     <div class="article-preview">
-                        <h2> <%=bdao.getTitle()%> 1</h2>
+                        <h2> <%=bdao.getTitle()%></h2>
                         <p><%=bdao.getContent()%>
 
                             <a href="#" class="read-more" title="Read More">

@@ -55,16 +55,16 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="../img/booksimg/book3.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Book Title</h5>
+                            <h5 class="card-title"><%=bdao.getBookName()%></h5>
                             <h6><%=bdao.getBookName()%></h6>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                             <p><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star p-1"></i><i class="fa fa-star-empty p-1"></i><i class="fa fa-star-half-o"></i></p>
                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                            <button class="btn btn-outline-primary">Continue Reading</button>
+                            <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>" class="btn btn-outline-primary text-decoration-none">Continue Reading</a>
                         </div>
                     </div>
                 </div>

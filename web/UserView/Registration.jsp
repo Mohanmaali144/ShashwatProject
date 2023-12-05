@@ -20,7 +20,7 @@
 
             <form action="../Registration" method="POST" class="my-form">
                 <div class="login-welcome-row">
-                    <a href="../Registration">click here</a>
+                    <!--<a href="../Registration">click here</a>-->
                     <h1>Create your account &#x1F44F;</h1>
                 </div>
                 <div class="socials-row">

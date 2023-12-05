@@ -1,5 +1,7 @@
 package com.shashwat.controller;
 
+import com.shashwat.model.BlogDAO;
+import com.shashwat.model.BlogDTO;
 import com.shashwat.model.Borrow;
 import com.shashwat.model.BorrowDTO;
 import com.shashwat.model.Subscription;
@@ -26,6 +28,9 @@ public class GetBook extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            /// user Home
+            String userhome = request.getParameter("userhome");
+
             HttpSession session = request.getSession();
             ArrayList<BookDAO> bookdao = new ArrayList<>();
 
@@ -38,30 +43,45 @@ public class GetBook extends HttpServlet {
                 ArrayList<BookDAO> genredao = bookdto.getGenre();
                 session.setAttribute("genredao", genredao);
 
+                if (userhome != null) {
+
+                    response.sendRedirect("./UserView/index.jsp");
+
+                } else {
+
 //                -------------Subscription dao 
-                Subscription subdao = new Subscription();
-                UserDAO udao = (UserDAO) session.getAttribute("udao");
-                subdao.setId(udao.getId());
+                    Subscription subdao = new Subscription();
+                    UserDAO udao = (UserDAO) session.getAttribute("udao");
+                    subdao.setId(udao.getId());
 
 //                subdao.setIsSubscribed(false);
-                SubscriptionDTO subdto = new SubscriptionDTO();
-                if (subdto.getSubscription(subdao)) {
-                    session.setAttribute("subdao", subdao);
+                    SubscriptionDTO subdto = new SubscriptionDTO();
+                    if (subdto.getSubscription(subdao)) {
+                        session.setAttribute("subdao", subdao);
 
-                    response.sendRedirect("./UserView/Home.jsp");
-                } else {
-                    session.setAttribute("subdao", subdao);
+                        response.sendRedirect("./UserView/Home.jsp");
+                    } else {
+                        session.setAttribute("subdao", subdao);
 
-                    response.sendRedirect("./UserView/Home.jsp");
+                        response.sendRedirect("./UserView/Home.jsp");
+                    }
+
+                    BorrowDTO borrowdto = new BorrowDTO();
+                    ArrayList<Borrow> borrowdao = new ArrayList<>();
+                    borrowdto.getBorrow(borrowdao, udao.getId());
+                    session.setAttribute("borrowdao", borrowdao);
+
+//                ==================getBlog===============================
+                    ArrayList<BlogDAO> userblog = new ArrayList<>();
+                    if (BlogDTO.getUserBlog(userblog, udao.getId())) {
+
+                        session.setAttribute("userblog", userblog);
+                    }
+
+                    //update by mohan +++++ continue.......
                 }
-
-                BorrowDTO borrowdto = new BorrowDTO();
-                ArrayList<Borrow> borrowdao = new ArrayList<>();
-                borrowdto.getBorrow(borrowdao, udao.getId());
-                session.setAttribute("borrowdao", borrowdao);
-
             } else {
-                response.sendRedirect("./UserView/Home.jsp");
+                response.sendRedirect("./UserView/index.jsp");
             }
 
         } catch (ClassNotFoundException ex) {

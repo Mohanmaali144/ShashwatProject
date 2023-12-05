@@ -11,9 +11,7 @@
 <%@page import="com.shashwat.model.Borrow" %>
 
 
-<% 
-    
-    
+<%      
         String bid = request.getParameter("bookid");
         int bookid=0;
         if(bid!=null){

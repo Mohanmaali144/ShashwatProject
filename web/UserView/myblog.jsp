@@ -5,6 +5,16 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.BlogDAO" %>
+<%@page import="java.util.ArrayList" %>
+<%
+    ArrayList<BlogDAO> userblog = ( ArrayList<BlogDAO>)session.getAttribute("userblog");
+    
+%>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,8 +29,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" type="text/css" href="../css/blog.css">
+
+        <link rel="stylesheet" type="text/css" href="css/blog.css">
         <title>Home</title>
         <style>
         </style>
@@ -28,79 +38,46 @@
     <body>
 
 
-
         <!--navbar-->
-        <%@include file="Navbar.jsp" %>
+        <%@include file="profilenavbar.jsp" %>
         <!-- ----------------------------------------------------- -->
         <section>
+
 
 
             <div class="background">
                 <div class="centering">
                     <div class="articles">
+                        <%
+                    System.out.println("afterdelite this"+userblog);
+                    if(userblog!=null){
+                    
+                   
+                    for(BlogDAO bdao : userblog){
+            
+                        %>
                         <article>
                             <figure>
                                 <img
-                                    src="https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?w=900&t=st=1687123388~exp=1687123988~hmac=f3410d0a5c2f20aec66c7d763c789bf0aae9c5026366fe41ae7d18e05e7e406b"
+                                    src="blog_img/<%=bdao.getImgage()%>"
                                     alt="Preview"
                                     >
                             </figure>
                             <div class="article-preview">
-                                <h2>My Blog</h2>
+                                <h2><%=bdao.getTitle()%></h2>
+                                <h6><%=bdao.getPublicationDate()%></h6>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                    Praesent in mauris eu tortor porttitor accumsan. 
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                    Praesent in mauris eu tortor porttitor accumsan. 
-                                    <a href="#" class="read-more" title="Read More">
-                                        Read more
-                                    </a><br>
-                                    <button class="btn btn-outline-primary float-end">Delete</button><br>
-                                </p>
-                            </div>
-                        </article>
-                        <article>            
-                            <figure>
-                                <img
-                                    src="https://img.freepik.com/free-photo/beautiful-aerial-shot-fronalpstock-mountains-switzerland-beautiful-pink-blue-sky_181624-9315.jpg?w=900&t=st=1687123407~exp=1687124007~hmac=15a1b5a4d3a5af66dfba67bdcd577f769f813bf06fc8b5e50f32f6503099bbd8"
-                                    alt="Preview"
-                                    >
-                            </figure>
-                            <div class="article-preview">
-                                <h2>My Blog</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                    Praesent in mauris eu tortor porttitor accumsan. 
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-                                    Praesent in mauris eu tortor porttitor accumsan. 
-                                    <a href="#" class="read-more" title="Read More">
-                                        Read more
-                                    </a><br>
-                                    <button class="btn btn-outline-primary float-end">Delete</button><br>
-                                </p>
-                            </div>
-                        </article>
-                        <article>
-                            <figure>
-                                <img
-                                    src="https://img.freepik.com/free-photo/tropical-beach_74190-188.jpg?w=1800&t=st=1687169672~exp=1687170272~hmac=b66f9b9c1e344cbfe6fe2e5f65e94ebb8d418dad2e2af2b892ad9ac60e9eb79c"
-                                    alt="Preview"
-                                    >
-                            </figure>
-                            <div class="article-preview">
-                                <h2>My Blog</h2>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. 
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. 
 
-                                    <a href="#" class="read-more">
+                                    <%=bdao.getContent()%>
+                                    <a href="#" class="read-more" title="Read More">
                                         Read more
-                                    </a>
-                                    <br>
-                                    <button class="btn btn-outline-primary float-end">Delete</button><br>
+                                    </a><br>
+                                    <a href="../DeleteBlog?blog_id=<%=bdao.getBlogId()%>" class="btn btn-outline-primary text-light float-end">Delete</a><br>
                                 </p>
                             </div>
-                        </article>
+                        </article> <%}
+                }%>
+
                     </div>
                 </div>
             </div>

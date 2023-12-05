@@ -78,7 +78,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <form action="../Search"
-                        class="form-inline mx-auto d-flex justify-content-center d-lg-inline">
+                          class="form-inline mx-auto d-flex justify-content-center d-lg-inline">
                         <div class="input-group">
                             <input id="searchbar" class="form-control" type="search" name="search"
                                    placeholder="Search" aria-label="Search">
@@ -166,21 +166,22 @@
                                 <div class="dropdown-menu"
                                      aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item"
-                                       href="/SHASHWAT/GetBlog?category=novel">Novel</a>
-                                    <a class="dropdown-item" href="blog.jsp">Science
-                                        fiction</a>
+                                       href="/SHASHWAT/GetBlog?category=Culture">Culture</a>
                                     <a class="dropdown-item"
-                                       href="blog.jsp">Mystery</a>
+                                       href="/SHASHWAT/GetBlog?category=Entertainment">Entertainment</a>
                                     <a class="dropdown-item"
-                                       href="blog.jsp">Thriller</a>
+                                       href="/SHASHWAT/GetBlog?category=LifeStore">LifeStore</a>
                                     <a class="dropdown-item"
-                                       href="blog.jsp">Adventure</a>
+                                       href="/SHASHWAT/GetBlog?category=News">News Blogs</a>
                                     <a class="dropdown-item"
-                                       href="blog.jsp">Self-help</a>
+                                       href="/SHASHWAT/GetBlog?category=food">Food</a>
                                     <a class="dropdown-item"
-                                       href="/SHASHWAT/GetBlog?category=whether">Horror</a>
+                                       href="/SHASHWAT/GetBlog?category=travel">travel</a>
                                     <a class="dropdown-item"
                                        href="/SHASHWAT/GetBlog?category=technology">Technology</a>
+                                     <a class="dropdown-item"
+                                       href="/SHASHWAT/GetBlog?category=Sports">Sports</a>
+                                     
                                     <!-- call servlet for logout user -->
                                 </div>
                             </li>
@@ -204,8 +205,8 @@
                             </li>
 
                             <li class="nav-item ">
-                                <a href="myprofile/profile.jsp"><img
-                                        src="images/user.png" alt=""
+                                <a href="profile.jsp"><img
+                                        src="images/profile.png" alt=""
                                         class="user-pic" onclick="toggleMenu()"></a>
                             </li>
                         </ul>

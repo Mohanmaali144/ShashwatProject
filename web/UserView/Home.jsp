@@ -91,8 +91,11 @@
 
                 <div class="col mb-4">
                     <div class="card">
-                        <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>"data-toggle="modal" data-target="#bookinfo"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>                       
+                        <a href="ShowPDF.jsp?pdf=<%=bdao.getPdf()%>"data-toggle="modal" data-target="#bookinfo">
+                            <img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" >
+                        </a>                       
                         <div class="card-body">
+                            <center><h6><%=bdao.getBookName()%></h6></center>
                             <a  class="btn btn-success" href="../BookDetails?book=<%=bdao.getBookId()%>">More</a><button class="btn btn-secondary ml-3"  data-toggle="modal" data-id="<%=bdao.getBookId()%>"   data-target="#ex<%=bdao.getBookId()%>">Borrow</button>
                         </div>
                     </div>

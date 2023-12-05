@@ -21,7 +21,7 @@
 </head>
 
 <body>
-   
+    <%@include file="profilenavbar.jsp" %>
     <div class="container bg-light d-md-flex align-items-center">
         <div class="card box1 shadow-sm p-md-5 p-md-5 p-4">
             <div class="fw-bolder mb-4"><span class="fas"></span><span class="ps-1">&#8377;199,00</span></div>

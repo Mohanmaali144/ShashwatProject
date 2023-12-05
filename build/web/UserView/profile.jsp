@@ -23,7 +23,7 @@
         <title>Sidebar Menu | Side Navigation Bar</title>
         <!-- link ----------------------- -->
 
-        <link rel="stylesheet" href="../css/profile1.css">
+        <link rel="stylesheet" href="./css/profile1.css">
 
         <!-- link ends  -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -32,8 +32,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- bootsrap ------------------- -------------- ------------------- -->
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/sidebar.css" />
-        <link rel="stylesheet" href="../css/notification.css" />
+        <link rel="stylesheet" href="css/notification.css" />
         <!-- Boxicons CSS -->
         <link
             href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -46,76 +45,11 @@
         </style>
     </head>
     <body>
-        <nav class="navbar">
-            <div class="logo">
-                <i class="bx bx-menu menu-icon"></i>
-                <span class="logo-name">SHASHWAT</span>
-                <a href="notification.jsp" class="notification" style="text-decoration: none; color: white; margin-left: 80%">
-                    <span class="badge">3</span>
-                    <i class="bx bx-bell icon" style="font-size: 22px ; color: #fff; ;"></i>
-
-                </a>
-            </div>
-            <div class="sidebar">
-
-
-                <div class="sidebar-content">
-                    <ul class="lists">
-                        <li class="list">
-                            <a href="newpost.jsp" class="nav-link">
-                                <i class="bx bx-pointer icon"></i>
-                                <span class="link">+ New Post</span>
-                            </a>
-                        </li>
-                        <li class="list">
-                            <a href="profile.jsp" class="nav-link">
-                                <i class="bx bx-user-pin icon"></i>
-                                <span class="link">My Profile</span>
-                            </a>
-                        </li>
-                        <li class="list">
-                            <a href="myblog.jsp" class="nav-link">
-                                <i class="bx bx-book-alt icon"></i>
-                                <span class="link">My Blog</span>
-                            </a>
-                        </li>
-
-
-                        <li class="list">
-                            <a href="subscription.jsp" class="nav-link">
-                                <i class="bx bxs-user-badge icon"></i>
-                                <span class="link">Get Premium</span>
-                            </a>
-                        </li>
-                        <li class="list">
-                            <a href="likes.jsp" class="nav-link">
-                                <i class="bx bx-heart icon"></i>
-                                <span class="link">Likes</span>
-                            </a>
-                        </li>
-                        <li class="list">
-                            <a href="#" class="nav-link">
-                                <i class="bx bx-list-check icon"></i>
-                                <span class="link">My Reading List</span>
-                            </a>
-                        </li>
-
-                        <li class="list">
-                            <a href="#" class="nav-link">
-                                <i class="bx bx-log-out icon"></i>
-                                <span class="link">Logout</span>
-                            </a>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
-        </nav>
-
-        <section class="overlay"></section>
-
-        <script src="../js/sidebar.js"></script>
+        
+        
+        
+        <!--------------------->
+        <%@include file="profilenavbar.jsp" %>
         <!-- -------------------------------------------------------------------------------------- -->
         <!-- profile section card started  -->
 
@@ -127,7 +61,7 @@
                             <div class="row g-0">
                                 <div class="col-md-4 gradient-custom text-center text-white"
                                      style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                    <img src="../images/user.png"                  alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
+                                    <img src="images/profile_1.png"                  alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
                                     <!-- uplode image -->
                                     <input type="file" id="file-input" name="file-input" />
 
@@ -149,12 +83,12 @@
                                             <div class="col-6 mb-3">
                                                 <h6>Email</h6>
                                                 <!-- email display -->
-                                                <p class="text-muted">mohan144@gmail.com</p>
+                                                <p class="text-muted"><%= udao.getEmail() %></p>
                                             </div>
                                             <div class="col-6 mb-3">
                                                 <h6>Phone</h6>
                                                 <!-- display phone no -->
-                                                <p class="text-muted">+916261014296</p>
+                                                <p class="text-muted">+91 <%= udao.getMobile() %></p>
                                             </div>
                                         </div>
                                         <h6>Additional Information</h6>
@@ -162,12 +96,12 @@
                                         <div class="row pt-1">
                                             <div class="col-6 mb-3">
                                                 <h6>Date of Birth</h6>
-                                                <p class="text-muted">20-02-2004</p>
+                                                <p class="text-muted">03-04-2002</p>
                                             </div>
                                             <div class="col-6 mb-3">
-                                                <h6>Gendar</h6>
+                                                <h6>Gendar : </h6>
                                                 <!-- diplay gender -->
-                                                <p class="text-muted">Male</p>
+                                                <p class="text-muted"><%= udao.getGender() %></p>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-start">
@@ -203,31 +137,33 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email" value="<%= udao.getEmail() %>">
+                                    <p></p>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="phone">Phone</label>
-                                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" value="<%= udao.getMobile() %>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                                    <input type="text" class="form-control" id="username" placeholder="Enter your username" value="<%=udao.getUsername()%>">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="fullname">Full Name</label>
-                                    <input type="text" class="form-control" id="fullname" placeholder="Enter your full name">
+                                    <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" value="<%=udao.getFullname()%>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="dob">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dob">
+                                    <input type="text" class="form-control" id="dob" value="<%= udao.getDob() %>" >
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="gender">Gender</label>
                                     <select class="form-control" id="gender">
+                                        <option selected=""><%= udao.getGender() %></option>>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>

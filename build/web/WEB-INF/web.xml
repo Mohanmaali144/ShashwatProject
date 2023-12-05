@@ -68,6 +68,14 @@
         <servlet-name>AddReview</servlet-name>
         <servlet-class>com.shashwat.controller.AddReview</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteBlog</servlet-name>
+        <servlet-class>com.shashwat.controller.DeleteBlog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddLike</servlet-name>
+        <servlet-class>com.shashwat.controller.AddLike</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Registration</servlet-name>
         <url-pattern>/Registration</url-pattern>
@@ -135,5 +143,13 @@
     <servlet-mapping>
         <servlet-name>AddReview</servlet-name>
         <url-pattern>/AddReview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBlog</servlet-name>
+        <url-pattern>/DeleteBlog</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddLike</servlet-name>
+        <url-pattern>/AddLike</url-pattern>
     </servlet-mapping>
 </web-app>

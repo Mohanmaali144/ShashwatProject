@@ -5,6 +5,22 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.shashwat.model.manager.*"%>
+<%@page import="java.util.ArrayList"%>
+<%
+    
+      ArrayList<BookDAO> bookdao = ( ArrayList<BookDAO> )session.getAttribute("bookdao");
+    
+
+      if(bookdao==null){ 
+            response.sendRedirect("GetBook?userhome=100");
+        }
+            
+
+
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -146,16 +162,28 @@
         <div class="container">
             <center><h3>New Books</h3></center>
 
+
             <div class="row row-cols-lg-5 row-cols-md-3">
+
+
+                <%                    
+                if(bookdao!=null){        
+                for(BookDAO bdao : bookdao){
+                %>
+
+
                 <div class="col mb-4">
                     <div class="card">
-                        <a href="#loginmodal" data-toggle="modal" data-target="#loginmodal"><img class="book" src="UserView/img/robinsharma.jpg" class="card-img-top" alt="Book 1" ></a>
+                        <a href="#loginmodal" data-toggle="modal" data-target="#loginmodal"><img class="book" src="/SHASHWAT/Bookimg/<%=bdao.getImg()%>" class="card-img-top" alt="Book 1" ></a>
                         <div class="card-body">
-                            <button class="btn btn-primary">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
+                            <h6><%=bdao.getBookName()%></h6>
+                            <button class="btn btn-primary"  data-toggle="modal" data-target="#loginmodal">Borrow</button><button class="btn btn-secondary ml-3"  data-toggle="modal" data-target="#bookinfo">More</button>
                         </div>
                     </div>
                 </div>
+                <%}
 
+                }%>
                 <div class="col mb-4">
                     <div class="card">
                         <a href="#loginmodal" data-toggle="modal" data-target="#loginmodal"><img class="book" src="UserView/img/robinsharma.jpg" class="card-img-top" alt="Book 1" ></a>
@@ -283,6 +311,7 @@
             <center><h3>Free Books</h3></center>
 
             <div class=" row row-cols-lg-5 row-cols-md-3">
+
 
 
                 <div class="col mb-4">
@@ -587,5 +616,4 @@
             </div>
 
 
-        </div>
-
+        </div>
